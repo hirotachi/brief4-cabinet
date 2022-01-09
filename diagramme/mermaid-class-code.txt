@@ -1,0 +1,26 @@
+classDiagram
+direction LR
+User <|-- Doctor
+User <|-- Patient
+User: +String name
+User: +String surname
+User: +Date birthdate
+User: +int id
+
+Doctor "1" --> "1..*" Patient
+Patient "1" --> "1" Doctor
+class Doctor{
+    +String specialty
+    +login()
+    +createPatient(details)
+    +updatePatient(id, updates)
+    +deletePatient(id)
+}
+
+class Patient{
+    -String phoneNumber
+    -String email
+    +String sickness
+    +sendMessage(message)
+}
+            
