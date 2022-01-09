@@ -1,0 +1,102 @@
+sequenceDiagram
+actor Doctor
+participant Dashboard
+participant Server
+participant Database
+
+Note over Doctor: enters site
+Note over Doctor: click on login
+
+Doctor->>+Dashboard: login
+Dashboard->>Doctor: request credentials
+Doctor->>Dashboard: enter credentials
+Dashboard->>+Server: verify credentials
+alt is credentials valid
+Server-->>Dashboard: credentials ok
+Dashboard->>Server: fetch all patients
+Server->>+Database: get all patients
+Database-->>-Server: all patients
+Server-->>Dashboard: send all patients
+Dashboard->>Doctor: show all patients
+else is credentials invalid
+Server-->>-Dashboard: credentials invalid
+Dashboard->>-Doctor: request valid credentials
+end
+
+%% Patient creation
+Note over Doctor: click on create patient
+Doctor->>+Dashboard: create patient
+Dashboard->>Doctor: request patient details
+Note over Doctor: enters patient details
+Doctor->>Dashboard: verify patient details
+alt is patient details valid
+Dashboard ->>Doctor: details are valid
+Doctor->>Dashboard: submit patient details
+Dashboard ->>+ Server: start patient creation
+Server->>+Database: patient exists?
+alt patient doesnt exist
+Database-->>Server: patient doesn't exist
+Server->>Database: save patient
+Database-->>Server: your patient ID
+Server-->>Dashboard: patient details with ID
+Note over Dashboard: add new patient to patients list
+Dashboard->>Doctor: success message
+else patient exits
+Database-->>-Server: patient exists
+Server-->>-Dashboard: error of duplicate details
+Dashboard->>Doctor: error message
+end
+else
+Dashboard ->>-Doctor: details invalid
+end
+
+%% Patient modification
+Note over Doctor: clicks on modify patient
+Doctor->>+Dashboard: modify patient
+Dashboard->>Doctor: show patient details
+Note over Doctor: modify patient details
+Doctor->>Dashboard: verify patient details
+alt is patient details valid
+Dashboard ->>Doctor: details are valid
+Doctor->>Dashboard: submit patient details
+Dashboard ->>+ Server: start patient modification
+Server->>+Database: patient exists by id?
+alt patient exists
+Server->>Database: save patient modifications
+Database -->>Server: patient modification saved
+Server-->>Dashboard: new patient details
+Note over Dashboard: update patient details on list
+Dashboard->>Doctor: success message
+else patient doesnt exist
+Database-->>-Server: patient doesnt exist
+Server-->>-Dashboard: patient modification unsuccessful
+Dashboard->>Doctor: error message
+end
+else
+Dashboard ->>-Doctor: details invalid
+end
+
+%% Patient deletion
+Note over Doctor: clicks on delete patient
+Doctor->>+Dashboard: delete patient
+Dashboard ->>+Server: start patient deletion
+Server->>+Database: patient exists by ID?
+alt patient exists
+Database -->> Server: patient exists
+Server ->> Database: delete patient
+Database -->> Server: patient deleted
+Server -->> Dashboard: send success message
+Note over Dashboard: remove patient from list
+Dashboard ->> Doctor: show success message
+else patient doesnt exist
+Database -->>-Server: patient doesnt exist
+Server -->>- Dashboard: patient not found
+Dashboard ->>- Doctor: error message
+end
+
+
+
+
+
+
+  
