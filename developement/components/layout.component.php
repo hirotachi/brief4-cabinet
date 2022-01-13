@@ -1,9 +1,14 @@
 <?php
 
-function layoutStart($title, $with_nav_comp)
+function createStyleLink($link)
 {
+    echo "<link rel='stylesheet' type='text/css' href='./styles/$link.css'>";
+}
 
-    echo '<!doctype html>
+function layoutStart($styles = [], $title = "cabinet rafik", $with_nav_comp = true)
+{
+    echo '
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,15 +21,17 @@ function layoutStart($title, $with_nav_comp)
       type="text/css"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./styles/styles.css">';
-
+    <title>$title</title>
+    ';
+    createStyleLink("styles");
+    foreach ($styles as $style) {
+        createStyleLink($style);
+    }
     if ($with_nav_comp) {
-        echo "<link rel='stylesheet' type='text/css' href='./styles/components/navigation.css'> ";
+        createStyleLink("components/navigation");
     }
 
-    echo "<title>$title</title>
-</head>
-<body>";
+    echo "</head><body>";
 }
 
 function layoutEnd()
