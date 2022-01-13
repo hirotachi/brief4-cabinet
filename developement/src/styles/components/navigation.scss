@@ -30,6 +30,9 @@
     @include tablet {
       width: 14rem;
     }
+    @include desktop {
+      width: 20rem;
+    }
 
     img {
       &:first-of-type {

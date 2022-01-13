@@ -34,6 +34,11 @@
     width: 14rem;
   }
 }
+@media only screen and (min-width: 992px) {
+  .nav__logo {
+    width: 20rem;
+  }
+}
 .nav__logo img:first-of-type {
   display: none;
 }
