@@ -17,9 +17,11 @@ function layoutStart($title, $with_nav_comp)
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="./styles/styles.css">';
+
     if ($with_nav_comp) {
         echo "<link rel='stylesheet' type='text/css' href='./styles/components/navigation.css'> ";
     }
+
     echo "<title>$title</title>
 </head>
 <body>";

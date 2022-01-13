@@ -5,6 +5,13 @@
   display: flex;
   align-content: center;
   justify-content: space-between;
+  @include tablet {
+    padding: 1.5rem 5%;
+  }
+  @include desktop {
+    padding: 1.5rem 10%;
+  }
+
 
   img {
     width: 100%;
@@ -15,7 +22,6 @@
     display: none;
     @include tablet {
       display: inline-block;
-
     }
   }
 
@@ -49,7 +55,8 @@
   }
 
   &__contact {
-    background-color: green;
+    background-color: $primary-color;
+    text-align: center;
     border-radius: .5rem;
     color: white;
     font-weight: bold;
@@ -72,6 +79,9 @@
     display: none;
     @include tablet {
       display: flex;
+    }
+    @include desktop {
+      gap: 5rem;
     }
   }
 
