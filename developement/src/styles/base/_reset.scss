@@ -1,0 +1,24 @@
+@use "../abstracts" as *;
+
+*,
+*:after, *:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 63.5%;
+}
+
+a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  font-size: inherit;
+}
+
+body {
+  font-family: $fonts;
+  font-size: 1.6rem;
+}

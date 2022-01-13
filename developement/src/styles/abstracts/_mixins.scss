@@ -1,0 +1,100 @@
+@use "variables" as *;
+
+// text mixins
+@mixin maxTextWidth($max, $min: null) {
+  white-space: nowrap;
+  max-width: $max;
+
+  @if $min {
+    min-width: $min;
+  }
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin maxLines($max: 2) {
+  display: -webkit-box;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $max;
+  overflow: hidden;
+}
+
+/// size
+@mixin size($width, $height: null) {
+  width: $width;
+  height: $height or $width;
+}
+
+// media queries
+@mixin tablet {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin landscape-phone {
+  @media only screen and (min-width: 576px) and (orientation: landscape) and (max-height: 400px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin lg-desktop {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin extra-lg-desktop {
+  @media only screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin tablet-and-landscape-phone {
+  @include tablet {
+    @content;
+  }
+
+  @include landscape-phone {
+    @content;
+  }
+}
+
+// border-radius
+@mixin inheritBorderRadius($size: inherit, $direction: "horizontal") {
+  &:first-child {
+    border-top-left-radius: $size;
+    border-#{if($direction == "horizontal", "bottom-left", "top-right")}-radius: $size;
+  }
+
+  &:last-child {
+    border-#{if($direction == "horizontal", "top-right", "bottom-left")}-radius: $size;
+    border-bottom-right-radius: $size;
+  }
+}
+
+// padding
+@mixin normalizePadding {
+  padding: 0 $mobile-spacing;
+  @include tablet {
+    padding: 0 $tablet-spacing;
+  }
+  @include desktop {
+    padding: 0 $desktop-spacing;
+  }
+}
