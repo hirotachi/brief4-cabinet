@@ -79,6 +79,8 @@
       }
 
       .rates {
+        display: flex;
+        gap: .4rem;
         color: $color-rating;
       }
     }

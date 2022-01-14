@@ -914,7 +914,110 @@
   color: #9d9d9d;
 }
 .reviews_list .review .rates {
+  display: flex;
+  gap: 0.4rem;
   color: #fab612;
+}
+
+.subscription {
+  padding: 0 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .subscription {
+    padding: 0 5%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .subscription {
+    padding: 0 10%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subscription {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+.subscription_container {
+  border-radius: 1.5rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../assets/images/medical-items.jpg");
+  background-position: center;
+  background-size: cover;
+  color: #ffffff;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .subscription_container {
+    padding: 6rem 15%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .subscription_container {
+    padding: 8rem 20%;
+  }
+}
+.subscription_intro {
+  margin-bottom: 3rem;
+  text-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+}
+.subscription_intro .title {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+@media only screen and (min-width: 768px) {
+  .subscription_intro .title {
+    font-size: 3.5rem;
+  }
+}
+.subscription_intro .text {
+  font-size: 1.4rem;
+}
+@media only screen and (min-width: 992px) {
+  .subscription_intro .text {
+    font-size: 1.6rem;
+  }
+}
+.subscription .input {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  display: flex;
+  padding: 0.5rem;
+}
+@media only screen and (min-width: 768px) {
+  .subscription .input {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .subscription .input {
+    width: 60%;
+  }
+}
+.subscription .input input {
+  flex: 1;
+  border: none;
+  padding: 1rem;
+}
+.subscription .input input:focus {
+  outline: none;
+}
+.subscription .input_btn {
+  display: inline-block;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: #2d98fb;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+}
+.subscription .input_btn:hover {
+  background-color: #057ff0;
 }
 
 .home--main {
