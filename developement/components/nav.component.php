@@ -10,12 +10,12 @@ function navLinks($parentClass = "")
 </ul>";
 }
 
-function nav()
+function nav($classes = [])
 {
     $navLinksMobile = navLinks("nav__mobile");
     $navLinksDesktop = navLinks();
-
-    echo "<header class='nav'>
+    $classnames = implode(" ", $classes);
+    echo "<header class='nav $classnames'>
 <a href='index.php' class='nav__logo'>
 <img src='assets/logo-desktop.svg' alt='logo'/>
 <img src='assets/logo-mobile.svg' alt='logo'/>

@@ -1,0 +1,102 @@
+@use "../../abstracts" as *;
+
+
+.intro {
+  padding: 4rem $padding-mobile;
+  padding-top: 5rem;
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem $padding-tablet;
+    padding-top: 5rem;
+    padding-bottom: 0;
+  }
+
+  @include desktop {
+    padding: 5rem $padding-desktop;
+    padding-bottom: 0;
+  }
+
+  &__img {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    height: 30rem;
+    width: 100%;
+    @include tablet {
+      display: inline-block;
+    }
+    @include desktop {
+      height: 50rem;
+    }
+
+    img {
+      position: absolute;
+      top: -10%;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  &__main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    @include tablet {
+      align-items: flex-start;
+      text-align: left;
+    }
+    @include desktop {
+      justify-content: center;
+    }
+
+    h1 {
+      text-transform: capitalize;
+      font-size: 3rem;
+      @include tablet {
+        font-size: 4rem;
+      }
+      @include desktop {
+        font-size: 4.5rem;
+      }
+
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__text {
+    font-size: 1.4rem;
+
+  }
+
+  &__btn {
+    width: fit-content;
+    cursor: pointer;
+    color: $white;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: .5rem;
+    background-color: $primary-color;
+    transition: all .2s ease;
+    font-weight: 700;
+    text-transform: capitalize;
+    @include tablet {
+      padding: 1rem 1.5rem;
+      font-size: 1.4rem;
+    }
+
+    @include desktop {
+      font-size: 1.5rem;
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}

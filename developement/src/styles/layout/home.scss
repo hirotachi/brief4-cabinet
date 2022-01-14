@@ -1,9 +1,11 @@
 @use "../abstracts" as *;
-@use "../components/home_promotionals";
+@use "../components/home";
 
 
 .home {
-
+  &--main {
+    background-color: $primary-bg-color;
+  }
 }
 
 .intro {

@@ -4,13 +4,13 @@ require_once "../components/nav.component.php";
 
 
 layoutStart(["layout/home"]);
-nav();
+nav(["home--main"]);
 
 ?>
 <div class="home">
-    <div class="intro">intro section</div>
     <?php
-    require "../components/home_promotionals.php";
+    require "../components/home/intro.php";
+    require "../components/home/promotionals.php";
     ?>
 </div>
 <?php layoutEnd(); ?>

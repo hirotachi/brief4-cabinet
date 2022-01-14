@@ -1,8 +1,119 @@
+.intro {
+  padding: 4rem 2rem;
+  padding-top: 5rem;
+}
+@media only screen and (min-width: 768px) {
+  .intro {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 5%;
+    padding-top: 5rem;
+    padding-bottom: 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .intro {
+    padding: 5rem 10%;
+    padding-bottom: 0;
+  }
+}
+.intro__img {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  height: 30rem;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .intro__img {
+    display: inline-block;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .intro__img {
+    height: 50rem;
+  }
+}
+.intro__img img {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+}
+.intro__main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+@media only screen and (min-width: 768px) {
+  .intro__main {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .intro__main {
+    justify-content: center;
+  }
+}
+.intro__main h1 {
+  text-transform: capitalize;
+  font-size: 3rem;
+}
+@media only screen and (min-width: 768px) {
+  .intro__main h1 {
+    font-size: 4rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .intro__main h1 {
+    font-size: 4.5rem;
+  }
+}
+.intro__main h1 span {
+  color: #1d63f4;
+}
+.intro__text {
+  font-size: 1.4rem;
+}
+.intro__btn {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  background-color: #1d63f4;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+@media only screen and (min-width: 768px) {
+  .intro__btn {
+    padding: 1rem 1.5rem;
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .intro__btn {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+  }
+}
+.intro__btn:hover {
+  background-color: #0a4cd4;
+}
+
 .promotionals {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 @media only screen and (min-width: 768px) {
   .promotionals {
@@ -55,4 +166,8 @@
 }
 .promotionals__card .info .text {
   font-size: 1.4rem;
+}
+
+.home--main {
+  background-color: #f1f4fa;
 }
