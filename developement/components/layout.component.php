@@ -43,7 +43,7 @@ function layoutEnd($scripts = [])
 {
     createScript("main");
     foreach ($scripts as $script) {
-        createStyleLink($script);
+        createScript($script);
     }
     echo "</body></html>";
 }

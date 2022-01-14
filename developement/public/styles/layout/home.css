@@ -31,7 +31,7 @@
 }
 @media only screen and (min-width: 992px) {
   .intro__img {
-    height: 50rem;
+    height: 40vw;
   }
 }
 .intro__img img {
@@ -126,7 +126,7 @@
 @media only screen and (min-width: 992px) {
   .promotionals {
     flex-wrap: nowrap;
-    padding: 5rem 12%;
+    padding: 5vw 12%;
   }
 }
 .promotionals__card {
@@ -166,6 +166,178 @@
 }
 .promotionals__card .info .text {
   font-size: 1.4rem;
+}
+
+.about {
+  padding: 0 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+@media only screen and (min-width: 768px) {
+  .about {
+    padding: 0 5%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .about {
+    padding: 0 10%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .about {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .about {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    gap: 10rem;
+  }
+}
+.about_img {
+  display: none;
+  background-color: rgba(29, 99, 244, 0.2);
+  border: 1px solid #2d98fb;
+  position: relative;
+}
+@media only screen and (min-width: 768px) {
+  .about_img {
+    display: block;
+  }
+}
+.about_img img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 80%;
+}
+@media only screen and (min-width: 768px) {
+  .about_img img {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .about_img img {
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .about_img img {
+    width: 80%;
+  }
+}
+.about .info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  .about .info {
+    text-align: left;
+    padding: 2rem 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .about .info {
+    padding: 3.5vw 0;
+  }
+}
+.about .info .title {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  color: #1d63f4;
+}
+.about .info .moto {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 1.5rem 0;
+}
+@media only screen and (min-width: 768px) {
+  .about .info .moto {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .about .info .moto {
+    font-size: clamp(3.5rem, 4vw, 5rem);
+  }
+}
+.about .info .text {
+  color: #7b7b7b;
+}
+.about .info .benefits {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+@media only screen and (min-width: 768px) {
+  .about .info .benefits {
+    gap: 2rem;
+  }
+}
+.about .info .benefits .benefit {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (min-width: 768px) {
+  .about .info .benefits .benefit {
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+}
+.about .info .benefits .benefit_icon {
+  font-size: 3.5rem;
+  color: #ffffff;
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  background-color: #1d63f4;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+.about .info .benefits .benefit_icon:hover {
+  background-color: #0a4cd4;
+}
+@media only screen and (min-width: 768px) {
+  .about .info .benefits .benefit_icon {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .about .info .benefits .benefit_icon {
+    font-size: 3rem;
+  }
+}
+.about .info .benefits .benefit_info {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.about .info .benefits .benefit_title {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+@media only screen and (min-width: 768px) {
+  .about .info .benefits .benefit_title {
+    font-size: 1.6rem;
+  }
+}
+.about .info .benefits .benefit_text {
+  font-size: 1.4rem;
+  color: #7b7b7b;
 }
 
 .home--main {

@@ -13,7 +13,7 @@
   }
   @include desktop {
     flex-wrap: nowrap;
-    padding: 5rem $padding-desktop + 2%;
+    padding: 5vw $padding-desktop + 2%;
   }
 
   &__card {
