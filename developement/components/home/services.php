@@ -6,7 +6,7 @@ $services = [
 ];
 ?>
 
-<div class="services">
+<div class="services" id="services">
     <div class="services_intro">
         <h2 class="title">our services</h2>
         <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis varius et in etiam est tortor
