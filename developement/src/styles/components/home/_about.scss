@@ -1,9 +1,5 @@
 @use "../../abstracts" as *;
 
-@mixin paddingVertical($size) {
-  padding-top: $size;
-  padding-bottom: $size;
-}
 
 .about {
   @include normalizePadding;

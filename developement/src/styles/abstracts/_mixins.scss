@@ -98,3 +98,8 @@
     padding: 0 $padding-desktop;
   }
 }
+
+@mixin paddingVertical($size) {
+  padding-top: $size;
+  padding-bottom: $size;
+}

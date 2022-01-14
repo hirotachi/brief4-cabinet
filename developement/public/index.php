@@ -12,6 +12,7 @@ nav(["home--main"]);
     require "../components/home/intro.php";
     require "../components/home/promotionals.php";
     require "../components/home/about.php";
+    require "../components/home/services.php";
     ?>
 </div>
 <?php layoutEnd(); ?>
