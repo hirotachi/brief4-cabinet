@@ -15,6 +15,7 @@ nav(["home--main"]);
     require "../components/home/services.php";
     require "../components/home/story.php";
     require "../components/home/appointment.php";
+    require "../components/home/reviews.php";
     ?>
 </div>
 <?php layoutEnd(); ?>
