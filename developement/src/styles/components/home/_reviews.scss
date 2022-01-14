@@ -1,0 +1,86 @@
+@use "../../abstracts" as *;
+
+
+.reviews {
+  @include normalizePadding;
+  @include paddingVertical(2rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @include tablet {
+    @include paddingVertical(5rem);
+  }
+
+  &_intro {
+    @include tablet {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    .title {
+      text-transform: capitalize;
+      margin-bottom: 1rem;
+      @include desktop {
+        font-size: 3.5rem;
+      }
+    }
+
+    .text {
+      font-size: 1.4rem;
+      color: $dark-grey;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @include desktop {
+      display: grid;
+      margin-top: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .review {
+      padding: 2rem 1rem;
+      box-shadow: 0 0 5rem rgba(black, .1);
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      @include tablet {
+        flex-basis: 45%;
+      }
+
+      img {
+        border-radius: 50%;
+        @include size(6rem);
+        object-fit: cover;
+        border: 1px solid $primary-color;
+      }
+
+      .name {
+        text-transform: capitalize;
+        font-weight: 700;
+      }
+
+      .text {
+        font-size: 1.4rem;
+        color: $grey;
+
+      }
+
+      .rates {
+        color: $color-rating;
+      }
+    }
+  }
+}
