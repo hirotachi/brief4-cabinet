@@ -70,6 +70,10 @@
   text-transform: capitalize;
   font-size: 1.4rem;
   display: none;
+  transition: all 0.2s ease;
+}
+.nav__contact:hover {
+  background-color: #0a4cd4;
 }
 @media only screen and (min-width: 768px) {
   .nav__contact {
@@ -94,6 +98,12 @@
   .nav .links {
     gap: 5rem;
   }
+}
+.nav .links .link {
+  transition: all 0.2s ease;
+}
+.nav .links .link:hover {
+  color: #2d98fb;
 }
 .nav__mobile {
   display: none;

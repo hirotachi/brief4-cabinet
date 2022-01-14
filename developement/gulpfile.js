@@ -23,5 +23,6 @@ function cleanStyles() {
 exports.buildStyles = buildStyles;
 
 exports.watch = function () {
-    gulp.watch("./src/styles/**/*.scss", gulp.series([cleanStyles, buildStyles]));
+    buildStyles();
+    gulp.watch("./src/styles/**/*.scss", buildStyles);
 };

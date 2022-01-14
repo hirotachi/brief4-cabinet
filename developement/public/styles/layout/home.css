@@ -35,6 +35,7 @@
 }
 .promotionals__card .icon {
   font-size: clamp(5rem, 7vw, 6rem);
+  color: #9ca0af;
 }
 .promotionals__card .info {
   display: flex;
