@@ -594,6 +594,231 @@
   border-radius: inherit;
 }
 
+.appointment {
+  padding: 0 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+@media only screen and (min-width: 768px) {
+  .appointment {
+    padding: 0 5%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .appointment {
+    padding: 0 10%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .appointment {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .appointment {
+    gap: 5rem;
+  }
+}
+.appointment_info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .appointment_info {
+    gap: 6rem;
+  }
+}
+.appointment_info_intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+@media only screen and (min-width: 768px) {
+  .appointment_info_intro {
+    text-align: left;
+  }
+}
+.appointment_info_intro .title {
+  text-transform: capitalize;
+}
+@media only screen and (min-width: 768px) {
+  .appointment_info_intro .title {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .appointment_info_intro .title {
+    font-size: clamp(4rem, 5vw, 4.5rem);
+  }
+}
+.appointment_info_intro_text {
+  color: #7b7b7b;
+  font-size: 1.6rem;
+}
+.appointment_info .main {
+  padding: 4rem 2rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_info .main {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 6rem 3rem;
+  }
+}
+.appointment_info .main_title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_info .main_title {
+    font-size: 2rem;
+  }
+}
+.appointment_info .main_info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.appointment_info .main_info .icon {
+  color: #1d63f4;
+  font-size: 1.8rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_info .main_info .icon {
+    font-size: 2rem;
+  }
+}
+.appointment_info .main_info .content {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_info .main_info .content {
+    font-size: 1.6rem;
+  }
+}
+.appointment_form {
+  border-radius: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  flex-direction: column;
+}
+.appointment_form_title {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1.8rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_form_title {
+    font-size: 2rem;
+  }
+}
+.appointment_form form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_form form {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+.appointment_form form label {
+  display: flex;
+  border: 1px solid #b3caf0;
+  border-radius: 0.5rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_form form label {
+    border-radius: 1rem;
+  }
+}
+.appointment_form form label input, .appointment_form form label textarea, .appointment_form form label select {
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  border-radius: inherit;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_form form label input, .appointment_form form label textarea, .appointment_form form label select {
+    padding: 1.2rem 1rem;
+  }
+}
+.appointment_form form label input::-moz-placeholder, .appointment_form form label textarea::-moz-placeholder, .appointment_form form label select::-moz-placeholder {
+  text-transform: capitalize;
+  color: #9d9d9d;
+}
+.appointment_form form label input:-ms-input-placeholder, .appointment_form form label textarea:-ms-input-placeholder, .appointment_form form label select:-ms-input-placeholder {
+  text-transform: capitalize;
+  color: #9d9d9d;
+}
+.appointment_form form label input::placeholder, .appointment_form form label textarea::placeholder, .appointment_form form label select::placeholder {
+  text-transform: capitalize;
+  color: #9d9d9d;
+}
+.appointment_form form label input:focus, .appointment_form form label textarea:focus, .appointment_form form label select:focus {
+  outline: none;
+}
+.appointment_form form label select {
+  background-color: white;
+}
+.appointment_form form label select option {
+  text-transform: capitalize;
+}
+.appointment_form form label textarea {
+  resize: none;
+  min-height: 10rem;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_form form label textarea {
+    min-height: 15rem;
+  }
+}
+.appointment_form form .textarea {
+  grid-column: 1/-1;
+}
+.appointment_form form button {
+  padding: 1rem;
+  background-color: #1d63f4;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  border: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.appointment_form form button:hover {
+  background-color: #0a4cd4;
+}
+@media only screen and (min-width: 992px) {
+  .appointment_form form button {
+    border-radius: 1rem;
+    padding: 1.2rem 1rem;
+  }
+}
+
 .home--main {
   background-color: #f1f4fa;
 }
