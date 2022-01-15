@@ -73,6 +73,9 @@
       font-size: 1.6rem;
       gap: 1rem;
     }
+    @include desktop {
+      font-size: 1.4rem;
+    }
 
     .icon {
       font-size: 1.8rem;

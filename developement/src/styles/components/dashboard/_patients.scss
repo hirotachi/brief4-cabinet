@@ -17,12 +17,7 @@
       align-items: center;
     }
 
-    & > span {
-      &:last-of-type {
-        display: flex;
-        justify-content: flex-end;
-      }
-    }
+
   }
 
   .columns {
@@ -33,6 +28,13 @@
       color: $color-3;
       font-size: 1.4rem;
       font-weight: 700;
+    }
+
+    &--more {
+      &:last-of-type {
+        display: flex;
+        justify-content: flex-end;
+      }
     }
 
 
@@ -76,6 +78,11 @@
         font-size: 1.4rem;
         border-radius: .5rem;
         display: none;
+        flex-direction: column;
+
+        &--open {
+          display: flex;
+        }
 
         span {
           cursor: pointer;
@@ -87,9 +94,7 @@
           }
         }
 
-        &--open {
-          display: inline-block;
-        }
+
       }
 
 

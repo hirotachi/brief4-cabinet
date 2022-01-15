@@ -42,6 +42,7 @@ function createScript($name)
 function layoutEnd($scripts = [])
 {
     createScript("main");
+    createScript("utils/helpers");
     foreach ($scripts as $script) {
         createScript($script);
     }
