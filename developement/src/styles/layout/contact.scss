@@ -1,0 +1,79 @@
+@use "../abstracts/" as *;
+
+.contact {
+    width: 100%;
+    margin: 5rem auto;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+  
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 1.5rem 5%;
+    }
+    @include desktop {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 7rem 10%;
+    }
+
+  .information  {
+    h6 {
+        margin-bottom: 3rem;
+        color: $primary-color;
+    }
+    h1 {
+        margin: 1rem 0;
+        color: $primary-text-color;
+    }
+    h5 {
+        margin-bottom: 8rem;
+        color: $primary-text-color;
+    }
+  }
+
+  .help {
+    display: flex;
+    gap: 4rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: $primary-text-color 1px solid;
+    margin: 5rem 0;
+    img {
+      width: 1.2rem;
+    }
+  }
+  .fill{
+      margin-bottom: 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      width: 100%;
+      background-color: $primary-bg-color;
+      padding: 4rem;
+      border-radius: 2rem;
+      
+      @include desktop {
+        width: 65rem;
+      }
+      * {
+        height: 5rem;
+        border-style: none;
+        border: 1px solid #E5E5E5;
+        border-radius: 1rem;
+        padding: 1rem;
+    }
+    textarea {
+        height: 15rem;
+    }
+    input:last-child {
+        font-weight: bold;
+        color: $primary-bg-color;
+        background-color: $primary-color;
+    }
+  }
+}
