@@ -3,19 +3,19 @@ function navLinks($parentClass = "")
 {
     $class = $parentClass != "" ? "$parentClass"."__links" : "links";
     return "<ul class='$class'>
-<li><a href='#'>home</a></li>
-<li><a href='#'>about</a></li>
-<li><a href='#'>services</a></li>
-<li><a href='#'>dashboard</a></li>
+<li class='link'><a href='/'>home</a></li>
+<li class='link'><a href='#about'>about</a></li>
+<li class='link'><a href='#services'>services</a></li>
+<li class='link'><a href='dashboard.php'>dashboard</a></li>
 </ul>";
 }
 
-function nav()
+function nav($classes = [])
 {
     $navLinksMobile = navLinks("nav__mobile");
     $navLinksDesktop = navLinks();
-
-    echo "<header class='nav'>
+    $classnames = implode(" ", $classes);
+    echo "<header class='nav $classnames'>
 <a href='index.php' class='nav__logo'>
 <img src='assets/logo-desktop.svg' alt='logo'/>
 <img src='assets/logo-mobile.svg' alt='logo'/>
