@@ -58,6 +58,7 @@
     .more {
       position: relative;
       justify-self: flex-end;
+      cursor: pointer;
 
       &_btn {
         border-radius: 5rem;
@@ -66,6 +67,11 @@
         justify-content: center;
         align-items: center;
         background-color: $primary-bg-color;
+        transition: all .2s ease;
+
+        &:hover {
+          background-color: darken($primary-bg-color, 5%);
+        }
       }
 
       &_options {
@@ -88,6 +94,7 @@
           cursor: pointer;
           padding: 1rem;
           display: inline-block;
+          font-size: 1.4rem;
 
           &:hover {
             background-color: $primary-bg-color;
