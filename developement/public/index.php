@@ -9,14 +9,14 @@ nav(["home--main"]);
 ?>
 <div class="home">
     <?php
-    require "../components/home/intro.php";
-    require "../components/home/promotionals.php";
-    require "../components/home/about.php";
-    require "../components/home/services.php";
-    require "../components/home/story.php";
-    require "../components/home/appointment.php";
-    require "../components/home/reviews.php";
-    require "../components/home/subscription.php";
+    require "../components/home/intro.component.php";
+    require "../components/home/promotionals.component.php";
+    require "../components/home/about.component.php";
+    require "../components/home/services.component.php";
+    require "../components/home/story.component.php";
+    require "../components/home/appointment.component.php";
+    require "../components/home/reviews.component.php";
+    require "../components/home/subscription.component.php";
     ?>
 </div>
 <?php layoutEnd(); ?>

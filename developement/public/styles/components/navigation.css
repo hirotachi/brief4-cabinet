@@ -19,7 +19,19 @@
   height: 100%;
 }
 .nav__contact {
+  background-color: #1d63f4;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
   display: none;
+}
+.nav__contact:hover {
+  background-color: #0a4cd4;
 }
 @media only screen and (min-width: 768px) {
   .nav__contact {
@@ -58,26 +70,6 @@
 @media only screen and (min-width: 768px) {
   .nav__open {
     display: none;
-  }
-}
-.nav__contact {
-  background-color: #1d63f4;
-  text-align: center;
-  border-radius: 0.5rem;
-  color: white;
-  font-weight: bold;
-  padding: 1rem;
-  text-transform: capitalize;
-  font-size: 1.4rem;
-  display: none;
-  transition: all 0.2s ease;
-}
-.nav__contact:hover {
-  background-color: #0a4cd4;
-}
-@media only screen and (min-width: 768px) {
-  .nav__contact {
-    display: inline-block;
   }
 }
 .nav .links {

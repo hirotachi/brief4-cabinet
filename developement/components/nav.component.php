@@ -3,7 +3,7 @@ function navLinks($parentClass = "")
 {
     $class = $parentClass != "" ? "$parentClass"."__links" : "links";
     return "<ul class='$class'>
-<li class='link'><a href='index.php'>home</a></li>
+<li class='link'><a href='/'>home</a></li>
 <li class='link'><a href='#about'>about</a></li>
 <li class='link'><a href='#services'>services</a></li>
 <li class='link'><a href='dashboard.php'>dashboard</a></li>
