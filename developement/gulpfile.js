@@ -31,6 +31,10 @@ function watchPhp() {
     gulp.watch("./**/*.php", gulp.series(browserSyncReload));
 }
 
+function watchJS() {
+    gulp.watch("./public/**/*.js", gulp.series(browserSyncReload))
+}
+
 
 function buildStyles() {
     cleanStyles();
@@ -45,6 +49,7 @@ function buildStyles() {
         .pipe(gulp.dest("./public/styles"));
 }
 
+
 function cleanStyles() {
     return del(["./public/styles/**/*.css"])
 }
@@ -53,5 +58,5 @@ function watchSass() {
     gulp.watch("./src/styles/**/*.scss", gulp.series(buildStyles, browserSyncReload))
 }
 
-exports.watch = gulp.parallel([watchPhp, watchSass, connectSync]);
+exports.watch = gulp.parallel([watchPhp, watchSass, watchJS, connectSync]);
 

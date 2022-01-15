@@ -12,5 +12,5 @@ nav();
     require "../components/dashboard/filters.component.php";
     ?>
 </div>
-<?php layoutEnd(); ?>
+<?php layoutEnd(["dashboard"]); ?>
 

@@ -13,6 +13,7 @@
     padding: 0 1rem;
     border-radius: .5rem;
     flex: 1;
+    transition: all .2s ease;
     @include tablet {
       flex: unset;
       width: 40%;
@@ -39,6 +40,14 @@
 
       &:focus {
         outline: none;
+      }
+    }
+
+    &--active {
+      border-color: $secondary-bg;
+
+      .icon {
+        color: $secondary-bg;
       }
     }
   }

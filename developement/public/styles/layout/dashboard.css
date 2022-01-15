@@ -10,6 +10,7 @@
   padding: 0 1rem;
   border-radius: 0.5rem;
   flex: 1;
+  transition: all 0.2s ease;
 }
 @media only screen and (min-width: 768px) {
   .filters_search {
@@ -45,6 +46,12 @@
 }
 .filters_search input:focus {
   outline: none;
+}
+.filters_search--active {
+  border-color: #2d98fb;
+}
+.filters_search--active .icon {
+  color: #2d98fb;
 }
 .filters_btn {
   background-color: #2d98fb;
