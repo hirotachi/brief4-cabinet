@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+@use "../components/dashboard";
+
+
+.dashboard {
+  @include normalizePadding;
+  margin-top: 3rem;
+  @include desktop {
+    margin-top: 5rem;
+  }
+}

@@ -1,0 +1,116 @@
+@use "../../abstracts" as *;
+
+.story {
+  @include normalizePadding;
+  @include paddingVertical(3rem);
+  display: flex;
+  gap: 4rem;
+  flex-direction: column;
+  @include tablet {
+    @include paddingVertical(5rem);
+  }
+  @include desktop {
+    @include paddingVertical(6rem);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+
+  &_main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include desktop {
+      align-items: center;
+      text-align: left;
+    }
+
+    .title {
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 3rem;
+      @include desktop {
+        font-size: 4rem;
+      }
+    }
+
+    .text {
+      color: $dark-grey;
+      font-size: 1.2rem;
+      @include tablet {
+        font-size: 1.4rem;
+      }
+
+      span {
+        font-weight: 600;
+        color: $primary-text-color;
+      }
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      @include desktop {
+        width: 70%;
+        margin-top: 3rem;
+        gap: 3rem;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border-radius: .5rem;
+        color: $green;
+        gap: .5rem;
+        background-color: rgba($green, .2);
+        padding: 2rem 1rem;
+
+        @include tablet {
+          border-radius: 1rem;
+        }
+        $colors: ("green": $green, "red": $red, "blue": $blue, "orange": $orange);
+        @each $name, $color in $colors {
+          &--#{$name} {
+            color: $color;
+            background-color: rgba($color, .2);
+          }
+        }
+
+        &_num {
+          font-size: 3.5rem;
+          font-weight: 600;
+          @include desktop {
+            font-size: 3rem;
+          }
+        }
+
+        &_title {
+          color: $grey;
+          text-transform: capitalize;
+          font-weight: 500;
+          font-size: 1.4rem;
+        }
+      }
+
+
+    }
+  }
+
+  &_img {
+    border-radius: 1rem;
+    height: 35rem;
+    background-color: $grey;
+    @include desktop {
+      height: 50rem;
+    }
+
+    img {
+      @include size(100%);
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+}
