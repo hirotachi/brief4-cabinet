@@ -55,8 +55,12 @@ function cleanStyles() {
 }
 
 function watchSass() {
-    gulp.watch("./src/styles/**/*.scss", gulp.series(buildStyles, browserSyncReload))
+    gulp.watch("./src/styles/**/*.scss", gulp.series(buildStyles))
 }
 
-exports.watch = gulp.parallel([watchPhp, watchSass, watchJS, connectSync]);
+function watchCSS() {
+    gulp.watch("./public/**/*.css", gulp.series(browserSyncReload))
+}
+
+exports.watch = gulp.parallel([watchPhp, watchSass, watchJS, watchCSS, connectSync]);
 

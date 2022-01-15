@@ -88,6 +88,10 @@
   }
 }
 
+.patients {
+  margin-top: 3rem;
+}
+
 .dashboard {
   padding: 0 2rem;
   margin-top: 3rem;

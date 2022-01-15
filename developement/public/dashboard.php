@@ -10,6 +10,7 @@ nav();
 <div class="dashboard">
     <?php
     require "../components/dashboard/filters.component.php";
+    require "../components/dashboard/patients.component.php";
     ?>
 </div>
 <?php layoutEnd(["dashboard"]); ?>
