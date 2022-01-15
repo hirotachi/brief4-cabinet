@@ -3,4 +3,101 @@
 
 .patients {
   margin-top: 3rem;
+  padding: 0 3rem;
+  border: 1px solid $primary-bg-color;
+  border-radius: 1rem;
+
+  .patient, .columns {
+    @include tablet {
+      display: grid;
+      grid-template-columns: 5rem repeat(2, 1fr) 1.5fr repeat(2, 10%) 8%;
+      gap: 1rem;
+      border-bottom: 1px solid $primary-bg-color;
+      padding: 2rem 0;
+      align-items: center;
+    }
+
+    & > span {
+      &:last-of-type {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .columns {
+    display: none;
+    @include tablet {
+      display: grid;
+      text-transform: capitalize;
+      color: $color-3;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+
+  }
+
+  .patient {
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+
+    img {
+      @include size(4rem);
+      border-radius: 5rem;
+      object-fit: cover;
+    }
+
+    .more {
+      position: relative;
+      justify-self: flex-end;
+
+      &_btn {
+        border-radius: 5rem;
+        @include size(3rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primary-bg-color;
+      }
+
+      &_options {
+        position: absolute;
+        right: 50%;
+        top: 100%;
+        z-index: 1;
+        background-color: $white;
+        box-shadow: 0 0 .2rem rgba(black, 0.25);
+        font-size: 1.4rem;
+        border-radius: .5rem;
+        display: none;
+
+        span {
+          cursor: pointer;
+          padding: 1rem;
+          display: inline-block;
+
+          &:hover {
+            background-color: $primary-bg-color;
+          }
+        }
+
+        &--open {
+          display: inline-block;
+        }
+      }
+
+
+      .option {
+        &-danger {
+          color: $red;
+        }
+      }
+    }
+  }
 }

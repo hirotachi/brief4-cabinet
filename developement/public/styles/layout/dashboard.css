@@ -90,6 +90,88 @@
 
 .patients {
   margin-top: 3rem;
+  padding: 0 3rem;
+  border: 1px solid #f1f4fa;
+  border-radius: 1rem;
+}
+@media only screen and (min-width: 768px) {
+  .patients .patient, .patients .columns {
+    display: grid;
+    grid-template-columns: 5rem repeat(2, 1fr) 1.5fr repeat(2, 10%) 8%;
+    gap: 1rem;
+    border-bottom: 1px solid #f1f4fa;
+    padding: 2rem 0;
+    align-items: center;
+  }
+}
+.patients .patient > span:last-of-type, .patients .columns > span:last-of-type {
+  display: flex;
+  justify-content: flex-end;
+}
+.patients .columns {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .patients .columns {
+    display: grid;
+    text-transform: capitalize;
+    color: #9ca0af;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+}
+.patients .patient {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+}
+.patients .patient:last-of-type {
+  border-bottom: none;
+}
+.patients .patient img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.patients .patient .more {
+  position: relative;
+  justify-self: flex-end;
+}
+.patients .patient .more_btn {
+  border-radius: 5rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f4fa;
+}
+.patients .patient .more_options {
+  position: absolute;
+  right: 50%;
+  top: 100%;
+  z-index: 1;
+  background-color: #ffffff;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.25);
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+  display: none;
+}
+.patients .patient .more_options span {
+  cursor: pointer;
+  padding: 1rem;
+  display: inline-block;
+}
+.patients .patient .more_options span:hover {
+  background-color: #f1f4fa;
+}
+.patients .patient .more_options--open {
+  display: inline-block;
+}
+.patients .patient .more .option-danger {
+  color: #f63964;
 }
 
 .dashboard {
