@@ -19,11 +19,26 @@
   }
 
   &__contact {
+    background-color: $primary-color;
+    text-align: center;
+    border-radius: .5rem;
+    color: white;
+    font-weight: bold;
+    padding: 1rem;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    transition: all .2s ease;
     display: none;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
     @include tablet {
       display: inline-block;
     }
   }
+
 
   &__logo {
     width: 4rem;
@@ -57,26 +72,6 @@
     }
   }
 
-  &__contact {
-    background-color: $primary-color;
-    text-align: center;
-    border-radius: .5rem;
-    color: white;
-    font-weight: bold;
-    padding: 1rem;
-    text-transform: capitalize;
-    font-size: 1.4rem;
-    display: none;
-    transition: all .2s ease;
-
-    &:hover {
-      background-color: darken($primary-color, 10%);
-    }
-
-    @include tablet {
-      display: inline-block;
-    }
-  }
 
   .links {
     list-style: none;
