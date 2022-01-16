@@ -26,8 +26,8 @@
         padding: 4rem;
         border-radius: 2rem;
 
-        @include desktop {
-            width: 65rem;
+        @include tablet {
+          width: 65rem;
         }
 
       h1{
