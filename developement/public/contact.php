@@ -7,8 +7,10 @@ layoutStart(["layout/contact"],"Cabinet Rafik - Contact Us");
 nav(); ?>
 <div class="contact">
     <!-- les informations -->
-    <div class ="information">
-        <h4>Contact Us</h4>
+    <div class="information">
+        <h6>Contact Us</h6>
+        <h1>How can I help you?</h1>
+        <h5>Fill in the form or drop an email</h5>
         <div class="help">
             <img src='assets/phone-contact.svg' alt='icon'>
             <span>+212600000000</span>
@@ -36,4 +38,4 @@ nav(); ?>
         </div>
     </form>
 </div>
- <? layoutEnd(); ?>
+<?php layoutEnd(); ?>
