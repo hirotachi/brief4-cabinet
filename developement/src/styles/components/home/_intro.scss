@@ -2,18 +2,18 @@
 
 
 .intro {
-  padding: 4rem $padding-mobile;
+  padding: 4rem $mobile-spacing;
   padding-top: 5rem;
   @include tablet {
     display: flex;
     justify-content: space-between;
-    padding: 4rem $padding-tablet;
+    padding: 4rem $tablet-spacing;
     padding-top: 5rem;
     padding-bottom: 0;
   }
 
   @include desktop {
-    padding: 5rem $padding-desktop;
+    padding: 5rem $desktop-spacing;
     padding-bottom: 0;
   }
 
