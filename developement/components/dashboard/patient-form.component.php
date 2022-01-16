@@ -3,6 +3,7 @@
 
     function openForm(initialState) {
         const patientForm = document.createElement("form");
+        patientForm.classList.add("form")
         const state = initialState ?? {}
 
         const patientFormWrapper = document.createElement("div")
@@ -80,7 +81,7 @@
         const addListener = input => {
             const {type, name} = input;
             input.addEventListener(type === "text" ? "input" : "change", (e) => {
-                state[name] = type === "date" ? e.target.valueAsDate.toLocaleDateString().padStart(10, "0") : e.target.value;
+                state[name] = type === "date" ? e.target.valueAsDate.toLocaleDateString().split("/").map(v => v.padStart(2, "0")).join("/") : e.target.value;
             })
         };
         patientForm.querySelectorAll("input").forEach(addListener)
