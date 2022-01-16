@@ -37,7 +37,7 @@
     }
     @include desktop {
       width: 35%;
-      padding-top: 1rem;
+      padding-top: 5vh;
     }
   }
 
@@ -79,6 +79,7 @@
         color: white;
         transition: all .2s ease;
         text-transform: capitalize;
+        font-weight: 700;
 
         &:hover {
           background-color: $primary-color;
