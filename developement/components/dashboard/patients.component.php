@@ -1,8 +1,9 @@
 <?php
 $patients = [
     [
-        "id" => uniqid(), "name" => "Xun Guiying", "phone" => "(212) 654-5678", "email" => "example@gmail.com",
-        "date" => date("m/d/y"), "sickness" => "covid 19"
+        "id" => uniqid(), "firstName" => "xun", "lastName" => "guiying", "phone" => "(212) 654-5678",
+        "email" => "example@gmail.com",
+        "date" => date("m/d/Y"), "sickness" => "covid 19"
     ]
 ];
 ?>
@@ -21,11 +22,12 @@ $patients = [
     <?php
     for ($i = 0; $i < 5; $i++) {
         [
-            "id" => $id, "name" => $name, "phone" => $phone, "email" => $email, "date" => $date, "sickness" => $sickness
+            "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phone" => $phone, "email" => $email,
+            "date" => $date, "sickness" => $sickness
         ] = $patients[0];
         echo "<div class='patient'>
         <img src='assets/images/avatars/400.jpg' alt='avatar'/>
-        <span>$name</span>
+        <span>$firstName $lastName</span>
         <span>$phone</span>
         <span>$email</span>
         <span>$date</span>
@@ -43,6 +45,7 @@ $patients = [
     }
     ?>
 </div>
+<?php require "patient-form.component.php" ?>
 
 
 <script>
@@ -64,6 +67,6 @@ $patients = [
     function editPatient(target) {
         const id = getIdFromParent(target);
         const patient = patientsMapById[id];
-        console.log(`edit patient ìd is ${id}`)
+        openForm(patient);
     }
 </script>

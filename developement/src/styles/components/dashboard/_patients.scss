@@ -60,7 +60,9 @@
     }
 
     &:last-of-type {
-      border-bottom: none;
+      @include tablet {
+        border-bottom: none;
+      }
     }
 
     font-weight: 600;
