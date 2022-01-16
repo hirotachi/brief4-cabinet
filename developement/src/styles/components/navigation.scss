@@ -1,15 +1,15 @@
 @use "../abstracts" as *;
 
 .nav {
-  padding: 1.5rem $padding-mobile;
+  padding: 1.5rem $mobile-spacing;
   display: flex;
   align-content: center;
   justify-content: space-between;
   @include tablet {
-    padding: 1.5rem $padding-tablet;
+    padding: 1.5rem $tablet-spacing;
   }
   @include desktop {
-    padding: 1.5rem $padding-desktop;
+    padding: 1.5rem $desktop-spacing;
   }
 
 
@@ -92,7 +92,7 @@
       transition: all .2s ease;
 
       &:hover {
-        color: $secondary-bg;
+        color: $secondary-color;
       }
     }
   }
@@ -113,7 +113,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem $padding-mobile;
+      padding: 1rem $mobile-spacing;
       font-size: 2.5rem;
 
       img {

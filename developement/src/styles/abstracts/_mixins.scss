@@ -90,12 +90,12 @@
 
 // padding
 @mixin normalizePadding {
-  padding: 0 $padding-mobile;
+  padding: 0 $mobile-spacing;
   @include tablet {
-    padding: 0 $padding-tablet;
+    padding: 0 $tablet-spacing;
   }
   @include desktop {
-    padding: 0 $padding-desktop;
+    padding: 0 $desktop-spacing;
   }
 }
 

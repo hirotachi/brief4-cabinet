@@ -19,7 +19,7 @@
   &_img {
     display: none;
     background-color: rgba($primary-color, .2);
-    border: 1px solid $secondary-bg;
+    border: 1px solid $secondary-color;
     position: relative;
     @include tablet {
       display: block;

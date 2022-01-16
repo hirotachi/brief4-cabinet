@@ -57,7 +57,7 @@
       gap: 2rem;
       align-items: center;
       text-transform: capitalize;
-      color: $secondary-bg;
+      color: $secondary-color;
       font-weight: 700;
       padding: 1rem 2rem;
       background-color: $primary-bg-color;
@@ -75,7 +75,7 @@
         padding: 1rem;
         border: none;
         cursor: pointer;
-        background-color: $secondary-bg;
+        background-color: $secondary-color;
         color: white;
         transition: all .2s ease;
         text-transform: capitalize;
