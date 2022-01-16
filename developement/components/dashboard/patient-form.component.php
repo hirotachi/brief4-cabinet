@@ -34,7 +34,8 @@
             {type: "text", label: "first name", name: "firstName"},
             {type: "text", label: "last name", name: "lastName"},
             {type: "email", label: "email address", name: "email"},
-            {type: "date", label: "birthdate", name: "date"},
+            {type: "tel", label: "phone number", name: "phone"},
+            {type: "date", label: "birth date", name: "date"},
             {type: "text", label: "sickness", name: "sickness"},
         ].map(data => {
             const {type, label, name} = data;
