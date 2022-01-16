@@ -2,23 +2,17 @@
 
 
 .patients {
-  margin-top: 3rem;
-  padding: 0 3rem;
-  border: 1px solid $primary-bg-color;
-  border-radius: 1rem;
-
-  .patient, .columns {
-    @include tablet {
-      display: grid;
-      grid-template-columns: 5rem repeat(2, 1fr) 1.5fr repeat(2, 10%) 8%;
-      gap: 1rem;
-      border-bottom: 1px solid $primary-bg-color;
-      padding: 2rem 0;
-      align-items: center;
-    }
-
-
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @include tablet {
+    border: 1px solid $primary-bg-color;
+    padding: 0 3rem;
+    border-radius: 1rem;
+    gap: unset;
   }
+
 
   .columns {
     display: none;
@@ -31,6 +25,15 @@
     }
 
     &--more {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      @include tablet {
+        position: unset;
+        right: unset;
+        top: unset;
+      }
+
       &:last-of-type {
         display: flex;
         justify-content: flex-end;
@@ -41,6 +44,21 @@
   }
 
   .patient {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $primary-bg-color;
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: .5rem;
+    position: relative;
+    padding-top: 2rem;
+    @include tablet {
+      border: none;
+      gap: unset;
+      position: unset;
+    }
+
     &:last-of-type {
       border-bottom: none;
     }
@@ -50,9 +68,12 @@
     font-size: 1.4rem;
 
     img {
-      @include size(4rem);
+      @include size(8rem);
       border-radius: 5rem;
       object-fit: cover;
+      @include tablet {
+        @include size(4rem)
+      }
     }
 
     .more {
@@ -111,5 +132,19 @@
         }
       }
     }
+  }
+
+
+  .patient, .columns {
+    @include tablet {
+      display: grid;
+      grid-template-columns: 5rem repeat(2, 1fr) 1.5fr repeat(2, 10%) 8%;
+      gap: 1rem;
+      border-bottom: 1px solid $primary-bg-color;
+      padding: 2rem 0;
+      align-items: center;
+    }
+
+
   }
 }

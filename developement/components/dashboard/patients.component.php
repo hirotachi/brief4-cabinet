@@ -30,11 +30,13 @@ $patients = [
         <span>$email</span>
         <span>$date</span>
         <span>$sickness</span>
-        <div class='more columns--more' aria-data-id='$id'>
-        <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
+        <div class='columns--more'>
+            <div class='more ' aria-data-id='$id'>
+            <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
             <div class='more_options'>
                 <span class='option--danger' onclick='removePatient(this)'>remove</span>
                 <span onclick='editPatient(this)'>edit</span>    
+            </div>
             </div>
         </div>
     </div>";
