@@ -11,7 +11,7 @@ function connectSync() {
     phpConnect.server({
         port: 8000,
         keepalive: true,
-        base: "public"
+        base: "./public"
     }, function () {
         browserSync({
             proxy: '127.0.0.1:8000',
