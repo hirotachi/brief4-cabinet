@@ -99,11 +99,73 @@
 
   &__mobile {
     display: none;
+    position: fixed;
+    background-color: $white;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    gap: 5rem;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem $padding-mobile;
+      font-size: 2.5rem;
+
+      img {
+        display: inline-block;
+        width: 4rem;
+      }
+
+      span {
+        cursor: pointer;
+      }
+    }
 
     &--open {
       display: flex;
       @include tablet {
         display: none;
+      }
+    }
+
+    &_contact {
+      text-transform: capitalize;
+      color: white;
+      font-weight: 700;
+      background-color: $primary-color;
+      padding: 1rem;
+      width: 70%;
+      margin: 0 auto;
+      text-align: center;
+      border-radius: .5rem;
+
+
+      &:hover {
+        background-color: $hover-primary-color;
+      }
+    }
+
+    &__links {
+      list-style: none;
+      text-transform: capitalize;
+      font-weight: 700;
+      text-align: center;
+      font-size: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .link {
+        transition: all .2s ease;
+
+        &:hover {
+          color: $primary-color;
+        }
       }
     }
   }
