@@ -1,0 +1,196 @@
+@use "../../abstracts" as *;
+
+
+.appointment {
+  @include normalizePadding;
+  @include paddingVertical(2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  @include tablet {
+    @include paddingVertical(5rem);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+  @include desktop {
+    gap: 5rem;
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include tablet {
+      gap: 6rem;
+    }
+
+    &_intro {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+      height: fit-content;
+      @include tablet {
+        text-align: left;
+      }
+
+      .title {
+        text-transform: capitalize;
+        @include tablet {
+          font-size: 3.5rem;
+        }
+        @include desktop {
+          font-size: clamp(4rem, 5vw, 4.5rem);
+        }
+      }
+
+      &_text {
+        color: $dark-grey;
+        font-size: 1.6rem;
+      }
+    }
+
+    .main {
+      padding: 4rem 2rem;
+      border-radius: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      @include desktop {
+        width: fit-content;
+        padding: 6rem 3rem;
+      }
+
+
+      &_title {
+        font-weight: 700;
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        margin-bottom: 2rem;
+        @include desktop {
+          font-size: 2rem;
+        }
+      }
+
+      &_info {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .icon {
+          color: $primary-color;
+          font-size: 1.8rem;
+          @include desktop {
+            font-size: 2rem;
+          }
+        }
+
+        .content {
+          display: flex;
+          flex-direction: column;
+          font-size: 1.4rem;
+          @include desktop {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+
+  &_form {
+    border-radius: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    flex-direction: column;
+
+    &_title {
+      font-weight: bold;
+      text-transform: capitalize;
+      font-size: 1.8rem;
+      @include desktop {
+        font-size: 2rem;
+      }
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      @include desktop {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      label {
+        display: flex;
+        border: 1px solid $secondary-bg-color;
+        border-radius: .5rem;
+        @include desktop {
+          border-radius: 1rem;
+        }
+
+        input, textarea, select {
+          width: 100%;
+          border: none;
+          padding: 1rem;
+          border-radius: inherit;
+          @include desktop {
+            padding: 1.2rem 1rem;
+          }
+
+          &::placeholder {
+            text-transform: capitalize;
+            color: $grey;
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+        }
+
+        select {
+          background-color: white;
+
+          option {
+            text-transform: capitalize;
+          }
+        }
+
+        textarea {
+          resize: none;
+          min-height: 10rem;
+          @include desktop {
+            min-height: 15rem;
+          }
+        }
+      }
+
+      .textarea {
+        grid-column: 1 / -1;
+      }
+
+      button {
+        padding: 1rem;
+        background-color: $primary-color;
+        color: $white;
+        border-radius: .5rem;
+        border: none;
+        text-transform: capitalize;
+        cursor: pointer;
+        transition: all .2s ease;
+
+        &:hover {
+          background-color: $hover-primary-color;
+        }
+
+        @include desktop {
+          border-radius: 1rem;
+          padding: 1.2rem 1rem;
+        }
+      }
+    }
+  }
+}

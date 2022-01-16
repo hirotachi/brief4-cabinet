@@ -1,0 +1,92 @@
+@use "../../abstracts" as *;
+
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
+  &_search {
+    border: 1px solid $primary-bg-color;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    border-radius: .5rem;
+    flex: 1;
+    transition: all .2s ease;
+    @include tablet {
+      flex: unset;
+      width: 40%;
+    }
+
+    @include desktop {
+      width: 30%;
+    }
+
+    .icon {
+      display: inline-block;
+      color: $dark-grey;
+    }
+
+    input {
+      border: none;
+      flex: 1;
+      padding: 1rem;
+
+      &::placeholder {
+        text-transform: capitalize;
+        color: $color-3;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &--active {
+      border-color: $secondary-bg;
+
+      .icon {
+        color: $secondary-bg;
+      }
+    }
+  }
+
+  &_btn {
+    background-color: $secondary-bg;
+    display: flex;
+    align-items: center;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    gap: .5rem;
+    transition: all .2s ease;
+
+    &:hover {
+      background-color: darken($secondary-bg, 10%);
+    }
+
+    @include tablet {
+      font-size: 1.6rem;
+      gap: 1rem;
+    }
+    @include desktop {
+      font-size: 1.4rem;
+    }
+
+    .icon {
+      font-size: 1.8rem;
+    }
+
+    .text {
+      text-transform: capitalize;
+      display: none;
+      @include tablet {
+        display: inline-block;
+      }
+    }
+  }
+}

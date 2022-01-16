@@ -1,0 +1,91 @@
+@use "../../abstracts" as *;
+
+
+.subscription {
+
+  @include normalizePadding;
+  @include paddingVertical(2rem);
+  @include tablet {
+    @include paddingVertical(5rem)
+  }
+
+  &_container {
+    border-radius: 1.5rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../assets/images/medical-items.jpg");
+    background-position: center;
+    background-size: cover;
+    color: $white;
+    text-align: center;
+    padding: 4rem 2rem;
+    @include tablet {
+      padding: 6rem 15%;
+    }
+    @include desktop {
+      padding: 8rem 20%;
+    }
+  }
+
+  &_intro {
+    margin-bottom: 3rem;
+    text-shadow: 0 0 .4rem rgba(black, .2);
+
+    .title {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      text-transform: capitalize;
+      @include tablet {
+        font-size: 3.5rem;
+      }
+    }
+
+    .text {
+      font-size: 1.4rem;
+      @include desktop {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .input {
+    background-color: $white;
+    border-radius: 1rem;
+    display: flex;
+    padding: .5rem;
+    @include tablet {
+      width: 75%;
+      margin: 0 auto;
+    }
+
+    @include desktop {
+      width: 60%;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      padding: 1rem;
+
+      &:focus {
+        outline: none;
+      }
+
+    }
+
+    &_btn {
+      display: inline-block;
+      padding: 1rem;
+      cursor: pointer;
+      background-color: $secondary-bg;
+      border-radius: .5rem;
+      font-size: 1.4rem;
+      transition: all .2s ease;
+      text-transform: capitalize;
+
+      &:hover {
+        background-color: darken($secondary-bg, 10%);
+      }
+
+
+    }
+  }
+}
