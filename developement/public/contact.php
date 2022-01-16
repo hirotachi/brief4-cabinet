@@ -7,7 +7,7 @@ layoutStart(["layout/contact"]);
 nav(); ?>
 <div class="contact">
     <!-- les informations -->
-    <div class ="information">
+    <div class="information">
         <h6>Contact Us</h6>
         <h1>How can I help you?</h1>
         <h5>Fill in the form or drop an email</h5>
@@ -34,4 +34,4 @@ nav(); ?>
         </div>
     </form>
 </div>
- <? layoutEnd(); ?>
+<?php layoutEnd(); ?>

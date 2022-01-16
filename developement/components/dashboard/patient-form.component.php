@@ -87,5 +87,4 @@
         patientForm.querySelectorAll("input").forEach(addListener)
     }
 
-    openForm()
 </script>
