@@ -3,7 +3,7 @@ require_once "../components/layout.component.php";
 require_once "../components/nav.component.php";
 
 
-layoutStart(["layout/contact"]);
+layoutStart(["layout/contact"],"Cabinet Rafik - Contact Us");
 nav(); ?>
 <div class="contact">
     <!-- les informations -->
