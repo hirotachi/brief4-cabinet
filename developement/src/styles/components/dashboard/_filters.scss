@@ -44,16 +44,16 @@
     }
 
     &--active {
-      border-color: $secondary-bg;
+      border-color: $secondary-color;
 
       .icon {
-        color: $secondary-bg;
+        color: $secondary-color;
       }
     }
   }
 
   &_btn {
-    background-color: $secondary-bg;
+    background-color: $secondary-color;
     display: flex;
     align-items: center;
     padding: .5rem 1rem;
@@ -66,7 +66,7 @@
     transition: all .2s ease;
 
     &:hover {
-      background-color: darken($secondary-bg, 10%);
+      background-color: darken($secondary-color, 10%);
     }
 
     @include tablet {

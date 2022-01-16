@@ -1,8 +1,9 @@
 <?php
 $patients = [
     [
-        "id" => uniqid(), "name" => "Xun Guiying", "phone" => "(212) 654-5678", "email" => "example@gmail.com",
-        "date" => date("m/d/y"), "sickness" => "covid 19"
+        "id" => uniqid(), "firstName" => "xun", "lastName" => "guiying", "phone" => "(212) 654-5678",
+        "email" => "example@gmail.com",
+        "date" => date("m/d/Y"), "sickness" => "covid 19"
     ]
 ];
 ?>
@@ -21,26 +22,30 @@ $patients = [
     <?php
     for ($i = 0; $i < 5; $i++) {
         [
-            "id" => $id, "name" => $name, "phone" => $phone, "email" => $email, "date" => $date, "sickness" => $sickness
+            "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phone" => $phone, "email" => $email,
+            "date" => $date, "sickness" => $sickness
         ] = $patients[0];
         echo "<div class='patient'>
         <img src='assets/images/avatars/400.jpg' alt='avatar'/>
-        <span>$name</span>
+        <span>$firstName $lastName</span>
         <span>$phone</span>
         <span>$email</span>
         <span>$date</span>
         <span>$sickness</span>
-        <div class='more columns--more' aria-data-id='$id'>
-        <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
+        <div class='columns--more'>
+            <div class='more ' aria-data-id='$id'>
+            <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
             <div class='more_options'>
                 <span class='option--danger' onclick='removePatient(this)'>remove</span>
                 <span onclick='editPatient(this)'>edit</span>    
+            </div>
             </div>
         </div>
     </div>";
     }
     ?>
 </div>
+<?php require "patient-form.component.php" ?>
 
 
 <script>
@@ -62,6 +67,6 @@ $patients = [
     function editPatient(target) {
         const id = getIdFromParent(target);
         const patient = patientsMapById[id];
-        console.log(`edit patient ìd is ${id}`)
+        openForm(patient);
     }
 </script>

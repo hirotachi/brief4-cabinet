@@ -11,7 +11,7 @@
         </div>
         <div class="input">
             <input type="email" placeholder="Enter your email"/>
-            <span class="input_btn">subscribes</span>
+            <span class="input_btn">subscribe</span>
         </div>
     </div>
 </div>

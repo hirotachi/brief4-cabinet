@@ -75,14 +75,14 @@
       display: inline-block;
       padding: 1rem;
       cursor: pointer;
-      background-color: $secondary-bg;
+      background-color: $secondary-color;
       border-radius: .5rem;
       font-size: 1.4rem;
       transition: all .2s ease;
       text-transform: capitalize;
 
       &:hover {
-        background-color: darken($secondary-bg, 10%);
+        background-color: darken($secondary-color, 10%);
       }
 
 

@@ -37,7 +37,6 @@ function watchJS() {
 
 
 function buildStyles() {
-    cleanStyles();
     return gulp
         .src("./src/styles/**/*.scss")
         .pipe(sass().on("error", sass.logError))
@@ -55,6 +54,7 @@ function cleanStyles() {
 }
 
 function watchSass() {
+    cleanStyles();
     gulp.watch("./src/styles/**/*.scss", gulp.series(buildStyles))
 }
 

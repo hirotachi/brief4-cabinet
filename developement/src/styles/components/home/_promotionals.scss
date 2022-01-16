@@ -4,16 +4,16 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 3rem $padding-mobile;
+  padding: 3rem $mobile-spacing;
   @include tablet {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 3rem $padding-tablet;
+    padding: 3rem $tablet-spacing;
   }
   @include desktop {
     flex-wrap: nowrap;
-    padding: 5vw $padding-desktop + 2%;
+    padding: 5vw $desktop-spacing + 2%;
   }
 
   &__card {
