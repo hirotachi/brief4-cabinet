@@ -1,5 +1,5 @@
 .nav {
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   display: flex;
   align-content: center;
   justify-content: space-between;
@@ -19,7 +19,19 @@
   height: 100%;
 }
 .nav__contact {
+  background-color: #1d63f4;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
   display: none;
+}
+.nav__contact:hover {
+  background-color: #0a4cd4;
 }
 @media only screen and (min-width: 768px) {
   .nav__contact {
@@ -32,6 +44,11 @@
 @media only screen and (min-width: 768px) {
   .nav__logo {
     width: 14rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .nav__logo {
+    width: 20rem;
   }
 }
 .nav__logo img:first-of-type {
@@ -55,22 +72,6 @@
     display: none;
   }
 }
-.nav__contact {
-  background-color: #1d63f4;
-  text-align: center;
-  border-radius: 0.5rem;
-  color: white;
-  font-weight: bold;
-  padding: 1rem;
-  text-transform: capitalize;
-  font-size: 1.4rem;
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-  .nav__contact {
-    display: inline-block;
-  }
-}
 .nav .links {
   list-style: none;
   gap: 2rem;
@@ -89,6 +90,12 @@
   .nav .links {
     gap: 5rem;
   }
+}
+.nav .links .link {
+  transition: all 0.2s ease;
+}
+.nav .links .link:hover {
+  color: #2d98fb;
 }
 .nav__mobile {
   display: none;
