@@ -7,7 +7,7 @@ create table if not exists Patient
     id          int auto_increment,
     firstname   varchar(255),
     lastName    varchar(255),
-    email       varchar(255) unique key,
+    email       varchar(255) unique,
     birthdate   datetime NOT NULL,
     phoneNumber varchar(255),
     sickness    varchar(255),
