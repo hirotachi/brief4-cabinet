@@ -8,7 +8,7 @@ class Router
     private IRequest $request;
     private array $supportedHttpMethods = array(
         "GET",
-        "POST"
+        "POST", "PUT", "DELETE"
     );
 
 
@@ -51,7 +51,7 @@ class Router
     {
         $dictionaryKey = strtolower($this->request->requestMethod);
         if (!isset($this->{$dictionaryKey})) {
-            $this->invalidMethodHandler();
+            $this->defaultRequestHandler();
             return;
         }
         $methodDictionary = $this->{$dictionaryKey};

@@ -37,15 +37,36 @@ class Request implements IRequest
     public function getBody()
     {
 
-        if ($this->requestMethod === "GET") {
-            return;
-        }
-        if ($this->requestMethod == "POST") {
+        function parsePostBody(): array
+        {
             $body = array();
             foreach ($_POST as $key => $value) {
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
             return $body;
+        }
+
+        function parsePutBody()
+        {
+            $input = file_get_contents("php://input");
+            $body = json_decode($input);
+
+            if (is_null($body)) {
+                foreach (explode("&", $input) as $value) {
+                    $explosion = explode("=", $value);
+
+                    [$key, $val] = $explosion;
+                    $body[$key] = $val;
+                }
+            }
+            return $body;
+        }
+
+        switch ($this->requestMethod) {
+            case "POST":
+                return parsePostBody();
+            case "PUT":
+                return parsePutBody();
         }
     }
 
