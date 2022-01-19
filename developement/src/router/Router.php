@@ -56,7 +56,8 @@ class Router
         }
         $methodDictionary = $this->{$dictionaryKey};
         $formattedRoute = $this->formatRoute($this->request->requestUri);
-        $queryString = $this->request->queryString;
+        $queryString = $this->request->queryString ?? "";
+        $queryString = $this->request->queryString ?? "";
         $method = $methodDictionary[str_replace("?$queryString", "", $formattedRoute)] ?? null;
         if (is_null($method)) {
             $this->defaultRequestHandler();

@@ -1,5 +1,17 @@
 @use "../../abstracts" as *;
 
+
+@keyframes appear {
+  from {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .patient_form {
   position: fixed;
   height: 100vh;
@@ -10,6 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: appear .3s ease forwards;
 
   &_close {
     box-shadow: inherit;

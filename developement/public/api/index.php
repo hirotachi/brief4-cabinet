@@ -10,10 +10,9 @@ $router->get("/api", function ($req) {
 
 
 $router->get("/api/patients", function () {
-    print_r($_GET);
-    $tester = ["id" => "nice", "hey" => "dude", "calm" => "hey"];
+    $obj = ["id" => "nice", "hey" => "dude", "calm" => "hey"];
     http_response_code(500);
-    return json_encode($tester);
+    return json_encode($obj);
 });
 
 
@@ -22,7 +21,7 @@ $router->put("/api/patients", function ($req) {
 });
 
 $router->delete("/api/patients", function ($req) {
-    print_r($_GET);
-    return "nice";
+    http_response_code(404);
+    return "patient has been deleted successfully";
 });
 
