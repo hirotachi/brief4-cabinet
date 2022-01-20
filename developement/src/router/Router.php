@@ -1,32 +1,21 @@
 <?php
-include_once "IRequest.php";
-
+include_once "Request.php";
 
 class Router
 {
 
-    private IRequest $request;
-//    private array $supportedHttpMethods = array(
-//        "GET",
-//        "POST",
-//        "PUT",
-//        "DELETE"
-//    );
+    private Request $request;
+    private string $defaultContentType;
 
-
-    public function __construct(IRequest $request)
+    public function __construct($defaultContentType = "application/json")
     {
-        $this->request = $request;
+        $this->defaultContentType = $defaultContentType;
+        $this->request = new Request();
     }
 
     function __call($name, $args)
     {
         list($route, $method) = $args;
-
-//        if (!in_array(strtoupper($name), $this->supportedHttpMethods)) {
-//            $this->invalidMethodHandler();
-//        }
-
 //        creating pattern from route in case route variable params ex: /api/patients/:id
         $formattedRoute = $this->formatRoute($route);
         $formattedRoute = preg_replace_callback("/:\w+/", function ($match) {
@@ -85,6 +74,8 @@ class Router
         }
 
 //        call route handler
+        $contentType = $this->defaultContentType;
+        header("Content-Type: $contentType");
         echo $method($this->request);
     }
 
