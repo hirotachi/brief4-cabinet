@@ -61,8 +61,8 @@ class Router
         if (is_null($method)) { // check for routes with variable params
             $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
             foreach ($methodDictionary as $route => $value) {
-                $isReg = str_contains($route, "\\/");
-                if (!$isReg) {
+                $isDynamicRoute = str_contains($route, "\\/"); // check the route string if it has been escaped or not
+                if (!$isDynamicRoute) {
                     continue;
                 }
                 preg_match("/$route$/", $formattedRoute, $matches);
