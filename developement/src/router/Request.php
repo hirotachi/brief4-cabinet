@@ -37,7 +37,7 @@ class Request implements IRequest
     public function getBody()
     {
 
-        function parsePostBody(): array
+        function parseFormBody(): array
         {
             $body = array();
             foreach ($_POST as $key => $value) {
@@ -46,7 +46,7 @@ class Request implements IRequest
             return $body;
         }
 
-        function parsePutBody()
+        function parseJSONBody()
         {
             $input = file_get_contents("php://input");
             $body = json_decode($input);
@@ -62,12 +62,11 @@ class Request implements IRequest
             return $body;
         }
 
-        switch ($this->requestMethod) {
-            case "POST":
-                return parsePostBody();
-            case "PUT":
-                return parsePutBody();
+        $body = parseFormBody();
+        if (count($body) == 0) {
+            $body = parseJSONBody();
         }
+        return $body;
     }
 
     /**
