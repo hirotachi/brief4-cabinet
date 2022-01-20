@@ -18,12 +18,13 @@ class Router
         list($route, $method) = $args;
 //        creating pattern from route in case route variable params ex: /api/patients/:id
         $formattedRoute = $this->formatRoute($route);
-        $formattedRoute = preg_replace_callback("/:\w+/", function ($match) {
+        $pattern = preg_replace_callback("/:\w+/", function ($match) {
             $paramName = substr($match[0], 1);
             return "(?P<$paramName>\w+)";
         }, $formattedRoute);
-        $formattedRoute = str_replace("/", "\/", $formattedRoute);
-
+        if ($pattern !== $formattedRoute) {
+            $formattedRoute = str_replace("/", "\/", $pattern);
+        }
         $this->{strtolower($name)}[$formattedRoute] = $method;
     }
 
@@ -52,14 +53,20 @@ class Router
 
         $queryString = $this->request->queryString ?? "";
         $formattedRoute = $this->formatRoute($this->request->requestUri);
-        $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
 
 
         $method = $methodDictionary[$formattedRoute] ?? null;
 
+
         if (is_null($method)) { // check for routes with variable params
+            $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
             foreach ($methodDictionary as $route => $value) {
+                $isReg = str_contains($route, "\\/");
+                if (!$isReg) {
+                    continue;
+                }
                 preg_match("/$route$/", $formattedRoute, $matches);
+
                 if (count($matches) !== 0) {
                     $this->request->params = array_slice($matches, 1);
                     $method = $value;
