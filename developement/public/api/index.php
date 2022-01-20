@@ -12,6 +12,9 @@ $router->get("/api", function ($req) {
     return json_encode($req->getHeader());
 });
 
+$router->get("/api/patients/1", function () {
+    return "hello from the first one";
+});
 
 $router->get("/api/patients/:id", function ($req) use ($database) {
 //    $search = getParams("search");

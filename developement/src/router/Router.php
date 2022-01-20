@@ -6,10 +6,12 @@ class Router
 {
 
     private IRequest $request;
-    private array $supportedHttpMethods = array(
-        "GET",
-        "POST", "PUT", "DELETE"
-    );
+//    private array $supportedHttpMethods = array(
+//        "GET",
+//        "POST",
+//        "PUT",
+//        "DELETE"
+//    );
 
 
     public function __construct(IRequest $request)
@@ -21,24 +23,19 @@ class Router
     {
         list($route, $method) = $args;
 
-        if (!in_array(strtoupper($name), $this->supportedHttpMethods)) {
-            $this->invalidMethodHandler();
-        }
+//        if (!in_array(strtoupper($name), $this->supportedHttpMethods)) {
+//            $this->invalidMethodHandler();
+//        }
 
 //        creating pattern from route in case route variable params ex: /api/patients/:id
         $formattedRoute = $this->formatRoute($route);
         $formattedRoute = preg_replace_callback("/:\w+/", function ($match) {
             $paramName = substr($match[0], 1);
-            return "(?P<$paramName>\S+)";
+            return "(?P<$paramName>\w+)";
         }, $formattedRoute);
         $formattedRoute = str_replace("/", "\/", $formattedRoute);
 
         $this->{strtolower($name)}[$formattedRoute] = $method;
-    }
-
-    private function invalidMethodHandler()
-    {
-        header("{$this->request->serverProtocol} 405 Method Not Allowed");
     }
 
     private function formatRoute($route): string
@@ -94,5 +91,10 @@ class Router
     private function defaultRequestHandler()
     {
         header("{$this->request->serverProtocol} 404 Not Found");
+    }
+
+    private function invalidMethodHandler()
+    {
+        header("{$this->request->serverProtocol} 405 Method Not Allowed");
     }
 }
