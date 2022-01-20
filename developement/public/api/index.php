@@ -13,12 +13,13 @@ $router->get("/api", function ($req) {
 });
 
 
-$router->get("/api/patients/", function () use ($database) {
+$router->get("/api/patients/:id", function ($req) use ($database) {
 //    $search = getParams("search");
 //    $query = $database->query("select * from Patient where email like :txt or lastName like :txt or firstname like :txt",
 //        "%$search%");
 //    return json_encode($query->fetchAll());
-    print_r($_SERVER);
+    $id = $req->params["id"];
+    return "hello $id";
 });
 
 

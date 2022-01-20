@@ -25,7 +25,15 @@ class Router
             $this->invalidMethodHandler();
         }
 
-        $this->{strtolower($name)}[$this->formatRoute($route)] = $method;
+//        creating pattern from route in case route variable params ex: /api/patients/:id
+        $formattedRoute = $this->formatRoute($route);
+        $formattedRoute = preg_replace_callback("/:\w+/", function ($match) {
+            $paramName = substr($match[0], 1);
+            return "(?P<$paramName>\S+)";
+        }, $formattedRoute);
+        $formattedRoute = str_replace("/", "\/", $formattedRoute);
+
+        $this->{strtolower($name)}[$formattedRoute] = $method;
     }
 
     private function invalidMethodHandler()
@@ -55,16 +63,32 @@ class Router
             return;
         }
         $methodDictionary = $this->{$dictionaryKey};
+
+        $queryString = $this->request->queryString ?? "";
         $formattedRoute = $this->formatRoute($this->request->requestUri);
-        $queryString = $this->request->queryString ?? "";
-        $queryString = $this->request->queryString ?? "";
-        $method = $methodDictionary[str_replace("?$queryString", "", $formattedRoute)] ?? null;
+        $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
+
+
+        $method = $methodDictionary[$formattedRoute] ?? null;
+
+        if (is_null($method)) { // check for routes with variable params
+            foreach ($methodDictionary as $route => $value) {
+                preg_match("/$route$/", $formattedRoute, $matches);
+                if (count($matches) !== 0) {
+                    $this->request->params = array_slice($matches, 1);
+                    $method = $value;
+                    break;
+                }
+            }
+        }
+
         if (is_null($method)) {
             $this->defaultRequestHandler();
             return;
         }
 
-        echo call_user_func_array($method, array($this->request));
+//        call route handler
+        echo $method($this->request);
     }
 
     private function defaultRequestHandler()
