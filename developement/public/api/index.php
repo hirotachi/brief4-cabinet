@@ -8,7 +8,7 @@ $router = new Router();
 $database = new Database("mysql:host=localhost:6033;dbname=app_db", "root", "root");
 
 
-$patient = new Patient($database);
+$patient = new Patient($database, "Patient");
 
 
 $router->get("/api", function ($req) {
