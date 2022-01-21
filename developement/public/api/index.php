@@ -4,30 +4,30 @@ include_once "../../src/models/index.php";
 include_once "../../utils/index.php";
 
 
-$router = new Router();
+$router = new Router(baseRoute: "/api");
 $database = new Database("mysql:host=localhost:6033;dbname=app_db", "root", "root");
 
 
 $patient = new Patient($database, "Patient");
 
 
-$router->get("/api", function ($req) {
+$router->get("/", function ($req) {
     return "hello world!!!!";
 });
 
 
-$router->get("/api/:tester", function ($req) {
+$router->get("/:tester", function ($req) {
     $name = $req->params["tester"];
     return "hello $name, how are you!";
 });
 
 
-$router->get("/api/patients", function ($req) use ($patient) {
+$router->get("/patients", function ($req) use ($patient) {
     return json_encode($patient->fetchAll());
 });
 
 
-$router->get("/api/patients/:id", function ($req) use ($patient) {
+$router->get("/patients/:id", function ($req) use ($patient) {
     $id = $req->params["id"];
     $patientData = $patient->fetch($id);
     if (!$patientData) {
@@ -37,11 +37,11 @@ $router->get("/api/patients/:id", function ($req) use ($patient) {
     return json_encode($patientData);
 });
 
-$router->get("/api/patients/1", function () {
+$router->get("/patients/1", function () {
     return "hello from the first one ".getQueryParams("nice");
 });
 
-$router->post("/api/patients", function ($req) use ($patient) {
+$router->post("/patients", function ($req) use ($patient) {
     return json_encode($req->getBody());
 });
 

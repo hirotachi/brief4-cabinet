@@ -6,18 +6,23 @@ class Router
 
     private Request $request;
     private string $defaultContentType;
+    private string $baseRoute;
 
-    public function __construct($defaultContentType = "application/json")
+    public function __construct($defaultContentType = "application/json", $baseRoute = "")
     {
         $this->defaultContentType = $defaultContentType;
         $this->request = new Request();
+        $this->baseRoute = $baseRoute;
     }
 
     function __call($name, $args)
     {
         list($route, $method) = $args;
-//        creating pattern from route in case route variable params ex: /api/patients/:id
+        $route = $this->baseRoute.$route;
+
         $formattedRoute = $this->formatRoute($route);
+
+        //        creating pattern from route in case route variable params ex: /api/patients/:id
         $pattern = preg_replace_callback("/:\w+/", function ($match) {
             $paramName = substr($match[0], 1);
             return "(?P<$paramName>\w+)";
