@@ -15,11 +15,11 @@ class Patient extends Base
 
     public function update()
     {
-//        todo: implement create patient
+//        todo: implement update patient
     }
 
     public function remove()
     {
-//        todo: implement create patient
+//        todo: implement remove patient
     }
 }
