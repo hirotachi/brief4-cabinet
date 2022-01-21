@@ -12,7 +12,16 @@ class Router
     {
         $this->defaultContentType = $defaultContentType;
         $this->request = new Request();
-        $this->baseRoute = $baseRoute;
+        $this->baseRoute = $this->formatRoute($baseRoute);
+    }
+
+    private function formatRoute($route): string
+    {
+        $result = rtrim($route, '/');
+        if ($result === '') {
+            return '/';
+        }
+        return $result;
     }
 
     function __call($name, $args)
@@ -31,15 +40,6 @@ class Router
             $formattedRoute = str_replace("/", "\/", $pattern);
         }
         $this->{strtolower($name)}[$formattedRoute] = $method;
-    }
-
-    private function formatRoute($route): string
-    {
-        $result = rtrim($route, '/');
-        if ($result === '') {
-            return '/';
-        }
-        return $result;
     }
 
     function __destruct()
@@ -94,6 +94,16 @@ class Router
     private function defaultRequestHandler()
     {
         header("{$this->request->serverProtocol} 404 Not Found");
+    }
+
+    /**
+     * create router with base path based on the current router
+     * @param $basePath
+     * @return Router
+     */
+    public function create($basePath): Router
+    {
+        return new Router(baseRoute: $this->baseRoute.$basePath);
     }
 
     private function invalidMethodHandler()

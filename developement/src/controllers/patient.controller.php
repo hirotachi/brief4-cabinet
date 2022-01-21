@@ -3,13 +3,14 @@
 function patientController(Router $router, Database $db)
 {
     $patient = new Patient($db, "Patient");
+    $patientRouter = $router->create("/patients");
 
-    $router->get("/patients", function ($req) use ($patient) {
+    $patientRouter->get("/", function ($req) use ($patient) {
         return json_encode($patient->fetchAll());
     });
 
 
-    $router->get("/patients/:id", function ($req) use ($patient) {
+    $patientRouter->get("/:id", function ($req) use ($patient) {
         $id = $req->params["id"];
         $patientData = $patient->fetch($id);
         if (!$patientData) {
@@ -19,11 +20,11 @@ function patientController(Router $router, Database $db)
         return json_encode($patientData);
     });
 
-    $router->get("/patients/1", function () {
+    $patientRouter->get("/1", function () {
         return "hello from the first one ".getQueryParams("nice");
     });
 
-    $router->post("/patients", function ($req) use ($patient) {
+    $patientRouter->post("/", function ($req) use ($patient) {
         return json_encode($req->getBody());
     });
 }
