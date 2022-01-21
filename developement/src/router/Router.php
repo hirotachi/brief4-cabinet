@@ -53,13 +53,13 @@ class Router
 
         $queryString = $this->request->queryString ?? "";
         $formattedRoute = $this->formatRoute($this->request->requestUri);
+        $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
 
 
         $method = $methodDictionary[$formattedRoute] ?? null;
 
 
         if (is_null($method)) { // check for routes with variable params
-            $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
             foreach ($methodDictionary as $route => $value) {
                 $isDynamicRoute = str_contains($route, "\\/"); // check the route string if it has been escaped or not
                 if (!$isDynamicRoute) {
