@@ -33,9 +33,9 @@ function patientController(Router $router, Database $db)
         return "hello from the first one ".getQueryParams("nice");
     });
 
-//    $patientRouter->post("/", function ($req) use ($patient) {
-//        return json_encode($req->getBody());
-//    });
+    $patientRouter->post("/", function ($req) use ($patient) {
+        return json_encode($req->getBody());
+    });
 
     $patientRouter->patch("/:id", function ($req) {
         $id = $req->params["id"];

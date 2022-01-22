@@ -127,4 +127,9 @@ class SubRouter
         $route = $this->baseRoute.$args[0];
         $this->router->{$name}($route, ...array_slice($args, 1));
     }
+
+    public function create(string $basePath): SubRouter
+    {
+        return $this->router->create($this->baseRoute.$basePath);
+    }
 }
