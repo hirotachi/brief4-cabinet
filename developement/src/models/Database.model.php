@@ -13,7 +13,8 @@ class Database
     public function query($str, ...$params): bool|PDOStatement
     {
         $stmt = $this->pdo->prepare($str);
-        preg_match_all("/:\S+/", $str, $matches);
+        preg_match_all("/:\w+/", $str, $matches);
+
         $stmtParams = $matches[0];
         $paramsLength = count($params);
         foreach ($stmtParams as $index => $param) {
@@ -22,9 +23,9 @@ class Database
             }
             $val = $params[$index];
             $paramType = match (gettype($val)) {
-                "string" => PDO::PARAM_STR,
                 "integer", "double" => PDO::PARAM_INT,
                 "boolean" => PDO::PARAM_BOOL,
+                default => PDO::PARAM_STR,
             };
             $stmt->bindParam($param, $val, $paramType);
         }

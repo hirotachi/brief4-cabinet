@@ -11,10 +11,10 @@ class Base
         $this->db = $db;
     }
 
-    public function fetchAll()
+    public function fetchAll(int $count = 10, int $page = 0)
     {
-//        return all patients
-        return $this->db->query("select * from ".$this->tableName)->fetchAll();
+        return $this->db->query("select * from ".$this->tableName." limit ".($count * ($page - 1)).", :count",
+            $count)->fetchAll();
     }
 
     public function fetch(int $id)

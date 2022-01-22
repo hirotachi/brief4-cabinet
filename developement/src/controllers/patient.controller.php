@@ -6,9 +6,8 @@ function patientController(Router $router, Database $db)
     $patientRouter = $router->create("/patients");
 
     $patientRouter->get("/", function ($req) use ($patient) {
-        $page = getQueryParams("page", "int");
-        echo "$page";
-        return json_encode($patient->fetchAll());
+        $page = getQueryParams("page", "int") ?? 1;
+        return json_encode($patient->fetchAll(page: $page));
     });
 
     $patientRouter->get("/:id", function ($req) use ($patient) {
@@ -27,10 +26,6 @@ function patientController(Router $router, Database $db)
         } catch (PDOException $ex) {
             echo "working here";
         }
-    });
-
-    $patientRouter->get("/1", function () {
-        return "hello from the first one ".getQueryParams("nice");
     });
 
     $patientRouter->post("/", function ($req) use ($patient) {
