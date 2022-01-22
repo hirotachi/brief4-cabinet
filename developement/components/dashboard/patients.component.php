@@ -60,7 +60,8 @@ $patients = [
     function removePatient(target) {
         const id = getIdFromParent(target)
         const patient = patientsMapById[id];
-
+        const answer = confirm(`do you really want to remove patient id "${id}"`);
+        console.log("answer is " + answer);
         console.log(`removing patient ${patient.name}`)
     }
 

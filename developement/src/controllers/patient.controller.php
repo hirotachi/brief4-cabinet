@@ -6,25 +6,39 @@ function patientController(Router $router, Database $db)
     $patientRouter = $router->create("/patients");
 
     $patientRouter->get("/", function ($req) use ($patient) {
+        $page = getQueryParams("page", "int");
+        echo "$page";
         return json_encode($patient->fetchAll());
     });
 
-
     $patientRouter->get("/:id", function ($req) use ($patient) {
         $id = $req->params["id"];
-        $patientData = $patient->fetch($id);
-        if (!$patientData) {
+        if (!is_numeric($id)) {
             http_response_code(404);
-            return "patient $id not found";
+            return "patient with id: '$id' doesnt exist";
         }
-        return json_encode($patientData);
+        try {
+            $patientData = $patient->fetch($id);
+            if (!$patientData) {
+                http_response_code(404);
+                return "patient $id not found";
+            }
+            return json_encode($patientData);
+        } catch (PDOException $ex) {
+            echo "working here";
+        }
     });
 
     $patientRouter->get("/1", function () {
         return "hello from the first one ".getQueryParams("nice");
     });
 
-    $patientRouter->post("/", function ($req) use ($patient) {
-        return json_encode($req->getBody());
+//    $patientRouter->post("/", function ($req) use ($patient) {
+//        return json_encode($req->getBody());
+//    });
+
+    $patientRouter->patch("/:id", function ($req) {
+        $id = $req->params["id"];
+        return "updated patient id => $id";
     });
 }

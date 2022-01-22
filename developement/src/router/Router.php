@@ -4,9 +4,9 @@ include_once "Request.php";
 class Router
 {
 
+    public string $baseRoute;
     private Request $request;
     private string $defaultContentType;
-    private string $baseRoute;
 
     public function __construct($defaultContentType = "application/json", $baseRoute = "")
     {
@@ -63,7 +63,6 @@ class Router
 
         $method = $methodDictionary[$formattedRoute] ?? null;
 
-
         if (is_null($method)) { // check for routes with variable params
             foreach ($methodDictionary as $route => $value) {
                 $isDynamicRoute = str_contains($route, "\\/"); // check the route string if it has been escaped or not
@@ -99,15 +98,33 @@ class Router
     /**
      * create router with base path based on the current router
      * @param $basePath
-     * @return Router
+     * @return SubRouter
      */
-    public function create($basePath): Router
+    public function create($basePath): SubRouter
     {
-        return new Router(baseRoute: $this->baseRoute.$basePath);
+        return new SubRouter($this, $basePath);
     }
 
     private function invalidMethodHandler()
     {
         header("{$this->request->serverProtocol} 405 Method Not Allowed");
+    }
+}
+
+class SubRouter
+{
+    private Router $router;
+    private string $baseRoute;
+
+    public function __construct($router, $baseRoute = "")
+    {
+        $this->router = $router;
+        $this->baseRoute = $baseRoute;
+    }
+
+    function __call($name, $args)
+    {
+        $route = $this->baseRoute.$args[0];
+        $this->router->{$name}($route, ...array_slice($args, 1));
     }
 }
