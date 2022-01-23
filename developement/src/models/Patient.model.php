@@ -33,15 +33,16 @@ class Patient extends Base
 
     public function create($data)
     {
+
         $keys = implode(", ", array_keys($data));
         $values = implode(", ", array_map(function ($v) {
             return "'$v'";
         }, $data));
-        
         $query = $this->db->query("insert into ".$this->tableName."($keys) values ($values)");
         $id = $this->db->connection->lastInsertId();
         $data["id"] = $id;
         return $data;
+
     }
 
     public function update()

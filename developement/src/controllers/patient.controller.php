@@ -36,7 +36,13 @@ function patientController(Router $router, Database $db)
     });
 
     $patientRouter->post("/", function ($req) use ($patient) {
-        $createdPatient = $patient->create($req->getBody());
+        try {
+            $createdPatient = $patient->create($req->getBody());
+        } catch (PDOException $e) {
+            preg_match_all("/key '\w+.(?P<key>\w+)'$/", $e->getMessage(), $matches);
+            http_response_code(409);
+            return json_encode(["message" => "duplicate entries", "keys" => $matches["key"]]);
+        }
         return json_encode($createdPatient);
     });
 
