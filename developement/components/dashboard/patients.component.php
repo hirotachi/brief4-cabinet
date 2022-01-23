@@ -13,6 +13,7 @@ $patients = array_map(function ($v) {
     $date = date_create($v["birthdate"]);
     return [...$v, "birthdate" => date_format($date, "m/d/Y")];
 }, $patient->search(page: $page, search: $searchQuery));
+
 ?>
 
 

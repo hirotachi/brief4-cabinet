@@ -27,7 +27,7 @@ class Patient extends Base
     public function search($count = 10, $page = 1, $search = "%%")
     {
         $offset = $count * ($page - 1);
-        return $this->db->query("select * from ".$this->tableName." where ".$this->generateSearchFilters()." limit :offset, :count",
+        return $this->db->query("select * from ".$this->tableName." where ".$this->generateSearchFilters()." order by id desc limit :offset, :count",
             ["search" => $search, "offset" => $offset, "count" => $count])->fetchAll();
     }
 
