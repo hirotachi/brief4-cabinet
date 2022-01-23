@@ -8,8 +8,14 @@ function patientController(Router $router, Database $db)
     $patientRouter->get("/", function ($req) use ($patient) {
         $page = getQueryParams("page", "int") ?? 1;
         $search = getQueryParams("search");
-        return json_encode($patient->searchPatients(page: $page, search: "%$search%"));
+        $result = array();
+        $searchQuery = "%$search%";
+        $result["count"] = $patient->countPatients($searchQuery);
+        $result["patients"] = $patient->searchPatients(page: $page, search: $searchQuery);
+
+        return json_encode($result);
     });
+
 
     $patientRouter->get("/:id", function ($req) use ($patient) {
         $id = $req->params["id"];

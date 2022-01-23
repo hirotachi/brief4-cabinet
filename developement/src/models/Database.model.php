@@ -10,22 +10,18 @@ class Database
         $this->connection = new PDO($uri, $username, $password, $driver_options);
     }
 
-    public function query($str, ...$params): bool|PDOStatement
+    public function query($str, $params = []): bool|PDOStatement
     {
         $stmt = $this->connection->prepare($str);
-        preg_match_all("/:\w+/", $str, $matches);
 
-        $stmtParams = $matches[0];
-        $paramsLength = count($params);
-        $arr = array();
-        foreach ($stmtParams as $index => $param) {
-            if ($paramsLength - 1 < $index) {
-                break;
-            }
-            $val = $params[$index];
-            $arr[$param] = $val;
+        foreach ($params as $param => $val) {
+            $paramType = match (gettype($val)) {
+                "integer" => PDO::PARAM_INT,
+                default => PDO::PARAM_STR,
+            };
+            $stmt->bindValue($param, $val, $paramType);
         }
-        $stmt->execute($arr);
+        $stmt->execute();
         return $stmt;
     }
 }
