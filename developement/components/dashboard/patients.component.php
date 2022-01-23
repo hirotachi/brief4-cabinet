@@ -11,6 +11,7 @@ $patients = [
 
 <div class="patients">
     <div class="columns">
+        <span></span>
         <span>name</span>
         <span>phone</span>
         <span>email</span>
@@ -24,6 +25,7 @@ $patients = [
             "date" => $date, "sickness" => $sickness
         ] = $patients[0]; ?>
         <div class='patient'>
+            <img src="./assets/images/avatars/400.jpg" alt="avatar"/>
             <span><?= $firstName." ".$lastName ?></span>
             <span><?= $phone ?></span>
             <span><?= $email ?></span>

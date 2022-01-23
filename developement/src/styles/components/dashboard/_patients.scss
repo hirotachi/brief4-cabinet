@@ -140,7 +140,7 @@
   .patient, .columns {
     @include tablet {
       display: grid;
-      grid-template-columns: repeat(2, 1fr) 1.5fr repeat(2, 10%) 8%;
+      grid-template-columns: 5rem repeat(2, 1fr) 1.5fr repeat(2, 10%) 8%;
       gap: 1rem;
       border-bottom: 1px solid $primary-bg-color;
       padding: 2rem 0;
