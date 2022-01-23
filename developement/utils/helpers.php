@@ -31,8 +31,8 @@ function startAdminSession($userId)
     $_SESSION["userId"] = $userId;
 }
 
-function getAdminId()
+function getAdminIdFromSession()
 {
     session_start();
-    return $_SESSION["userId"];
+    return $_SESSION["userId"] ?? null;
 }

@@ -7,6 +7,7 @@ class Router
     public string $baseRoute;
     private Request $request;
     private string $defaultContentType;
+    private array $middleware;
 
     public function __construct($defaultContentType = "application/json", $baseRoute = "")
     {
@@ -27,6 +28,9 @@ class Router
     function __call($name, $args)
     {
         list($route, $method) = $args;
+        $middleware = $args[2] ?? null;
+
+
         $route = $this->baseRoute.$route;
 
         $formattedRoute = $this->formatRoute($route);
@@ -39,7 +43,19 @@ class Router
         if ($pattern !== $formattedRoute) {
             $formattedRoute = str_replace("/", "\/", $pattern);
         }
-        $this->{strtolower($name)}[$formattedRoute] = $method;
+        $this->{strtolower($name)}[$formattedRoute] = function ($req) use ($middleware, $method) {
+            // run middleware if there is any before running the method
+            $canRunMethod = !$middleware;
+            if ($middleware && !$canRunMethod) {
+                $canRunMethod = $middleware($req);
+            }
+
+            if (!$canRunMethod) {
+                return;
+            }
+            return $method($req);
+        };
+
     }
 
     function __destruct()

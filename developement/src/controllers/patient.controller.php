@@ -6,6 +6,11 @@ function patientController(Router $router, Database $db)
     $patient = new Patient($db, "Patient");
     $patientRouter = $router->create("/patients");
 
+    $adminGuard = function ($req) {
+        $id = getAdminIdFromSession();
+        http_response_code(403);
+        return !!$id;
+    };
     $patientRouter->get("/", function ($req) use ($patient) {
         $page = getQueryParams("page", "int") ?? 1;
         $search = getQueryParams("search");
