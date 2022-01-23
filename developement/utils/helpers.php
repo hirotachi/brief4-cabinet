@@ -36,3 +36,12 @@ function getAdminIdFromSession()
     session_start();
     return $_SESSION["userId"] ?? null;
 }
+
+function adminPageGuard()
+{
+    $adminId = getAdminIdFromSession();
+    if ($adminId) {
+        return;
+    }
+    header("Location: login.php");
+}
