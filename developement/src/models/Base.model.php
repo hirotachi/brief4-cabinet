@@ -55,4 +55,13 @@ class Base
         $deletedCount = $this->db->query("delete from ".$this->tableName." where id = :id", ["id" => $id])->rowCount();
         return $deletedCount !== 0;
     }
+
+    public function findOne(array $filters)
+    {
+//        todo: add dynamic filters option (and,or,in...)
+        $filterQuery = implode(" and ", array_map(function ($key) {
+            return "$key = :$key";
+        }, array_keys($filters)));
+        return $this->db->query("select * from ".$this->tableName." where $filterQuery limit 1", $filters)->fetch();
+    }
 }

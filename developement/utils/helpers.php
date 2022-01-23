@@ -23,3 +23,16 @@ function handleDuplicateException($cb)
         return json_encode(["message" => "duplicate entries", "keys" => $matches["key"]]);
     }
 }
+
+
+function startAdminSession($userId)
+{
+    session_start();
+    $_SESSION["userId"] = $userId;
+}
+
+function getAdminId()
+{
+    session_start();
+    return $_SESSION["userId"];
+}
