@@ -28,11 +28,11 @@ function patientController(Router $router, Database $db)
         $search = getQueryParams("search");
         $result = array();
         $searchQuery = "%$search%";
-        $patientsCount = $patient->getPatientsCount($searchQuery);
-        
+        $patientsCount = $patient->getCount($searchQuery);
+
         $result["count"] = $patientsCount;
-        $result["page"] = ceil($patientsCount / 10);
-        $result["patients"] = $patient->searchPatients(page: $page, search: $searchQuery);
+        $result["total_pages"] = ceil($patientsCount / 10);
+        $result["patients"] = $patient->search(page: $page, search: $searchQuery);
 
         return json_encode($result);
     });
@@ -44,16 +44,12 @@ function patientController(Router $router, Database $db)
             http_response_code(404);
             return "patient with id: '$id' doesnt exist";
         }
-        try {
-            $patientData = $patient->fetchById($id);
-            if (!$patientData) {
-                http_response_code(404);
-                return "patient $id not found";
-            }
-            return json_encode($patientData);
-        } catch (PDOException $ex) {
-            echo "working here";
+        $patientData = $patient->fetchById($id);
+        if (!$patientData) {
+            http_response_code(404);
+            return "patient $id not found";
         }
+        return json_encode($patientData);
     });
 
     $patientRouter->post("/", function ($req) use ($patient) {
