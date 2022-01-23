@@ -8,7 +8,13 @@ class Patient extends Base
         parent::__construct($db, $tableName);
     }
 
-    public function create()
+    public function searchPatients($count = 10, $page = 1, $search = "%%")
+    {
+        return $this->db->query("select * from ".$this->tableName." where email like :search limit ".($count * ($page - 1).", $count"),
+            $search)->fetchAll();
+    }
+
+    public function create($data)
     {
 //        todo: implement create patient
     }

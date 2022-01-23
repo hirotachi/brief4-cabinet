@@ -17,19 +17,15 @@ class Database
 
         $stmtParams = $matches[0];
         $paramsLength = count($params);
+        $arr = array();
         foreach ($stmtParams as $index => $param) {
             if ($paramsLength - 1 < $index) {
                 break;
             }
             $val = $params[$index];
-            $paramType = match (gettype($val)) {
-                "integer", "double" => PDO::PARAM_INT,
-                "boolean" => PDO::PARAM_BOOL,
-                default => PDO::PARAM_STR,
-            };
-            $stmt->bindParam($param, $val, $paramType);
+            $arr[$param] = $val;
         }
-        $stmt->execute();
+        $stmt->execute($arr);
         return $stmt;
     }
 }

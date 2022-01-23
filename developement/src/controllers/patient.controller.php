@@ -7,7 +7,8 @@ function patientController(Router $router, Database $db)
 
     $patientRouter->get("/", function ($req) use ($patient) {
         $page = getQueryParams("page", "int") ?? 1;
-        return json_encode($patient->fetchAll(page: $page));
+        $search = getQueryParams("search");
+        return json_encode($patient->searchPatients(page: $page, search: "%$search%"));
     });
 
     $patientRouter->get("/:id", function ($req) use ($patient) {
@@ -17,7 +18,7 @@ function patientController(Router $router, Database $db)
             return "patient with id: '$id' doesnt exist";
         }
         try {
-            $patientData = $patient->fetch($id);
+            $patientData = $patient->fetchById($id);
             if (!$patientData) {
                 http_response_code(404);
                 return "patient $id not found";

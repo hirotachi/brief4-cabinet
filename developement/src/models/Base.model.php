@@ -2,8 +2,8 @@
 
 class Base
 {
-    private Database $db;
-    private string $tableName;
+    protected Database $db;
+    protected string $tableName;
 
     public function __construct(Database $db, $tableName)
     {
@@ -11,13 +11,13 @@ class Base
         $this->db = $db;
     }
 
-    public function fetchAll(int $count = 10, int $page = 0)
+    public function fetchAll(int $count = 10, int $page = 0, string $search = "")
     {
         return $this->db->query("select * from ".$this->tableName." limit ".($count * ($page - 1)).", :count",
             $count)->fetchAll();
     }
 
-    public function fetch(int $id)
+    public function fetchById(int $id)
     {
         return $this->db->query("select * from ".$this->tableName." where id = :id", $id)->fetch();
     }
