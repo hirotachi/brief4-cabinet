@@ -1,5 +1,23 @@
 <?php
 
+
+/**
+ * handle duplicate entries exception
+ * @param $cb
+ * @return false|string|void
+ */
+function handleDuplicateException($cb)
+{
+    try {
+        return $cb();
+    } catch (PDOException $e) {
+        preg_match_all("/key '\w+.(?P<key>\w+)'$/", $e->getMessage(), $matches);
+        http_response_code(409);
+        return json_encode(["message" => "duplicate entries", "keys" => $matches["key"]]);
+    }
+}
+
+
 function patientController(Router $router, Database $db)
 {
     $patient = new Patient($db, "Patient");
@@ -36,18 +54,22 @@ function patientController(Router $router, Database $db)
     });
 
     $patientRouter->post("/", function ($req) use ($patient) {
-        try {
+        return handleDuplicateException(function () use ($req, $patient) {
             $createdPatient = $patient->create($req->getBody());
-        } catch (PDOException $e) {
-            preg_match_all("/key '\w+.(?P<key>\w+)'$/", $e->getMessage(), $matches);
-            http_response_code(409);
-            return json_encode(["message" => "duplicate entries", "keys" => $matches["key"]]);
-        }
-        return json_encode($createdPatient);
+            return json_encode($createdPatient);
+        });
     });
 
-    $patientRouter->patch("/:id", function ($req) {
-        $id = $req->params["id"];
-        return "updated patient id => $id";
+    $patientRouter->patch("/:id", function ($req) use ($patient) {
+        return handleDuplicateException(function () use ($patient, $req) {
+            $id = $req->params["id"];
+
+            $updatedPatient = $patient->update($id, $req->getBody());
+            if (!$updatedPatient) {
+                http_response_code(404);
+                return "patient $id doesnt exist";
+            }
+            return json_encode($updatedPatient);
+        });
     });
 }

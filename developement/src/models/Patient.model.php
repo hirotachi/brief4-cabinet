@@ -45,9 +45,18 @@ class Patient extends Base
 
     }
 
-    public function update()
+    public function update($id, $updates)
     {
-//        todo: implement update patient
+        $patient = $this->fetchById($id);
+        if (!$patient) {
+            return false;
+        }
+        $keys = implode(", ", array_map(function ($key) {
+            return "$key = :$key";
+        }, array_keys($updates)));
+        $this->db->query("update ".$this->tableName." set $keys where id = :id",
+            [...$updates, "id" => $id]);
+        return [...$patient, ...$updates];
     }
 
     public function remove()

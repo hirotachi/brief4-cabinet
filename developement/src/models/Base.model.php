@@ -19,6 +19,6 @@ class Base
 
     public function fetchById(int $id)
     {
-        return $this->db->query("select * from ".$this->tableName." where id = :id", $id)->fetch();
+        return $this->db->query("select * from ".$this->tableName." where id = :id", ["id" => $id])->fetch();
     }
 }
