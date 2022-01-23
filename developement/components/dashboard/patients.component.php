@@ -18,8 +18,7 @@ $patients = [
         <span>sickness</span>
         <span class="columns--more">more</span>
     </div>
-    <?php for ($i = 0; $i < 5; $i++): ?>
-        <?php
+    <?php for ($i = 0; $i < 5; $i++):
         [
             "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phone" => $phone, "email" => $email,
             "date" => $date, "sickness" => $sickness
