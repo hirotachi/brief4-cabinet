@@ -11,7 +11,6 @@ $patients = [
 
 <div class="patients">
     <div class="columns">
-        <span></span>
         <span>name</span>
         <span>phone</span>
         <span>email</span>
@@ -19,31 +18,29 @@ $patients = [
         <span>sickness</span>
         <span class="columns--more">more</span>
     </div>
-    <?php
-    for ($i = 0; $i < 5; $i++) {
+    <?php for ($i = 0; $i < 5; $i++): ?>
+        <?php
         [
             "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phone" => $phone, "email" => $email,
             "date" => $date, "sickness" => $sickness
-        ] = $patients[0];
-        echo "<div class='patient'>
-        <img src='assets/images/avatars/400.jpg' alt='avatar'/>
-        <span>$firstName $lastName</span>
-        <span>$phone</span>
-        <span>$email</span>
-        <span>$date</span>
-        <span>$sickness</span>
-        <div class='columns--more'>
-            <div class='more ' aria-data-id='$id'>
-            <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
-            <div class='more_options'>
-                <span class='option--danger' onclick='removePatient(this)'>remove</span>
-                <span onclick='editPatient(this)'>edit</span>    
-            </div>
+        ] = $patients[0]; ?>
+        <div class='patient'>
+            <span><?= $firstName." ".$lastName ?></span>
+            <span><?= $phone ?></span>
+            <span><?= $email ?></span>
+            <span><?= $date ?></span>
+            <span><?= $sickness ?></span>
+            <div class='columns--more'>
+                <div class='more ' aria-data-id='<?= $id ?>'>
+                    <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
+                    <div class='more_options'>
+                        <span class='option--danger' onclick='removePatient(this)'>remove</span>
+                        <span onclick='editPatient(this)'>edit</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>";
-    }
-    ?>
+    <?php endfor; ?>
 </div>
 <?php require "patient-form.component.php" ?>
 

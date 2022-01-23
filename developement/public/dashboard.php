@@ -4,7 +4,7 @@ require_once "../components/nav.component.php";
 require_once "../utils/index.php";
 
 
-adminPageGuard();
+//adminPageGuard();
 
 layoutStart(["layout/dashboard"], "Cabinet Rafik - Dashboard");
 nav();
