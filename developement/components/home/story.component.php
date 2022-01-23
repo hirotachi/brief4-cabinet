@@ -17,16 +17,14 @@ $stats = [
         </p>
         <div class="stats">
             <?php
-            foreach ($stats as $stat) {
+            foreach ($stats as $stat):
                 [$num, $title, $color_class] = $stat;
-                echo "
-                <div class='stat stat--$color_class'>
-                    <span class='stat_num'>$num+</span>
-                    <span class='stat_title'>$title</span>
+                ?>
+                <div class='stat stat--<?= $color_class ?>'>
+                    <span class='stat_num'><?= $num ?>+</span>
+                    <span class='stat_title'><?= $title ?></span>
                 </div>
-                ";
-            }
-            ?>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="story_img"><img src="assets/images/preview-cabinet.jpg" alt="cabinet preview"></div>
