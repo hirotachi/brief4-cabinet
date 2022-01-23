@@ -20,7 +20,6 @@ class Base
 
     public function create($data)
     {
-
         $keys = implode(", ", array_keys($data));
         $values = implode(", ", array_map(function ($v) {
             return "'$v'";

@@ -30,7 +30,9 @@ $patients = array_map(function ($v) {
         [
             "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phoneNumber" => $phone, "email" => $email,
             "birthdate" => $date, "sickness" => $sickness
-        ] = $patientData; ?>
+        ] = array_map(function ($v) {
+            return $v ?? "N/A";
+        }, $patientData); ?>
         <div class='patient'>
             <img src="./assets/images/avatars/400.jpg" alt="avatar"/>
             <span><?= $firstName." ".$lastName ?></span>

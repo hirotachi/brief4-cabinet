@@ -49,7 +49,7 @@ class Request implements IRequest
         function parseJSONBody()
         {
             $input = file_get_contents("php://input");
-            $body = json_decode($input);
+            $body = json_decode($input, true);
 
             if (is_null($body)) {
                 foreach (explode("&", $input) as $value) {

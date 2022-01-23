@@ -18,7 +18,12 @@ function handleDuplicateException($cb)
     try {
         return $cb();
     } catch (PDOException $e) {
-        preg_match_all("/key '\w+.(?P<key>\w+)'$/", $e->getMessage(), $matches);
+
+        $message = $e->getMessage();
+        if (!str_contains($message, "duplicate")) {
+            return json_encode(["message" => $message]);
+        }
+        preg_match_all("/key '\w+.(?P<key>\w+)'$/", $message, $matches);
         http_response_code(409);
         return json_encode(["message" => "duplicate entries", "keys" => $matches["key"]]);
     }

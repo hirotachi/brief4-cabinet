@@ -14,7 +14,7 @@ function patientController(Router $router, Database $db)
         return !!$id;
     };
 
-    $patientRouter->useMiddleware($adminGuard);
+//    $patientRouter->useMiddleware($adminGuard);
 
     $patientRouter->get("/", function ($req) use ($patient) {
         $page = getQueryParams("page", "int") ?? 1;
@@ -47,7 +47,11 @@ function patientController(Router $router, Database $db)
 
     $patientRouter->post("/", function ($req) use ($patient) {
         return handleDuplicateException(function () use ($req, $patient) {
-            $createdPatient = $patient->create($req->getBody());
+            $data = $req->getBody();
+            if (isset($data["birthdate"])) {
+                $data["birthdate"] = date_format(date_create($data["birthdate"]), "Y-m-d");
+            }
+            $createdPatient = $patient->create($data);
             return json_encode($createdPatient);
         });
     });
@@ -59,7 +63,11 @@ function patientController(Router $router, Database $db)
                 http_response_code(404);
                 return "patient with id: '$id' doesnt exist";
             }
-            $updatedPatient = $patient->update($id, $req->getBody());
+            $updates = $req->getBody();
+            if (isset($updates["birthdate"])) { // avoid issues with date format
+                $updates["birthdate"] = date_format(date_create($updates["birthdate"]), "Y-m-d");
+            }
+            $updatedPatient = $patient->update($id, $updates);
             if (!$updatedPatient) {
                 http_response_code(404);
                 return "patient $id doesnt exist";
