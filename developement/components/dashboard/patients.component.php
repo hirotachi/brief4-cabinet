@@ -1,11 +1,18 @@
 <?php
-$patients = [
-    [
-        "id" => uniqid(), "firstName" => "xun", "lastName" => "guiying", "phone" => "(212) 654-5678",
-        "email" => "example@gmail.com",
-        "date" => date("m/d/Y"), "sickness" => "covid 19"
-    ]
-];
+$database = new Database();
+$patient = new Patient($database);
+
+
+$page = getQueryParams("page", "int") ?? 1;
+$search = getQueryParams("search");
+$searchQuery = "%$search%";
+$patientsCount = $patient->getCount($searchQuery);
+
+$totalPages = ceil($patientsCount / 10);
+$patients = array_map(function ($v) {
+    $date = date_create($v["birthdate"]);
+    return [...$v, "birthdate" => date_format($date, "m/d/Y")];
+}, $patient->search(page: $page, search: $searchQuery));
 ?>
 
 
@@ -19,11 +26,11 @@ $patients = [
         <span>sickness</span>
         <span class="columns--more">more</span>
     </div>
-    <?php for ($i = 0; $i < 5; $i++):
+    <?php foreach ($patients as $patientData):
         [
-            "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phone" => $phone, "email" => $email,
-            "date" => $date, "sickness" => $sickness
-        ] = $patients[0]; ?>
+            "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phoneNumber" => $phone, "email" => $email,
+            "birthdate" => $date, "sickness" => $sickness
+        ] = $patientData; ?>
         <div class='patient'>
             <img src="./assets/images/avatars/400.jpg" alt="avatar"/>
             <span><?= $firstName." ".$lastName ?></span>
@@ -41,8 +48,18 @@ $patients = [
                 </div>
             </div>
         </div>
-    <?php endfor; ?>
+    <?php endforeach; ?>
 </div>
+<?php if ($totalPages > 1):
+    $url = preg_replace("/\??(&+)?page=\d+&?/", "", getCurrentUrl());
+    $isSearching = str_contains($url, "search=");
+    ?>
+    <div class="patients_pagination">
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a href="<?= $url.($i === 1 ? "" : ($isSearching ? "&" : "?")."page=$i") ?>"><?= $i ?></a>
+        <?php endfor; ?>
+    </div>
+<?php endif ?>
 <?php require "patient-form.component.php" ?>
 
 

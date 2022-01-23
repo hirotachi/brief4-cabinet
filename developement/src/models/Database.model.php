@@ -4,8 +4,11 @@ class Database
 {
     public PDO $connection;
 
-    public function __construct($uri, $username, $password)
-    {
+    public function __construct(
+        $uri = "mysql:host=localhost:6033;dbname=app_db",
+        $username = "root",
+        $password = "root"
+    ) {
         $driver_options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
         $this->connection = new PDO($uri, $username, $password, $driver_options);
     }
@@ -24,4 +27,6 @@ class Database
         $stmt->execute();
         return $stmt;
     }
+
+
 }

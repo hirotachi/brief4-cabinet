@@ -13,6 +13,23 @@
     gap: unset;
   }
 
+  &_pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+      background-color: $primary-bg-color;
+      padding: .8rem 1rem;
+      border-radius: .5rem;
+      transition: all .2s ease;
+
+      &:hover {
+        background-color: darken($primary-bg-color, 10%);
+      }
+    }
+  }
+
 
   .columns {
     display: none;

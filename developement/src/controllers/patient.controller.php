@@ -80,5 +80,6 @@ function patientController(Router $router, Database $db)
         }
         return "success";
     });
+
 }
 

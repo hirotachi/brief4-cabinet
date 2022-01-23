@@ -7,7 +7,7 @@
 
 
 $router = new Router(baseRoute: "/api");
-$database = new Database("mysql:host=localhost:6033;dbname=app_db", "root", "root");
+$database = new Database();
 
 
 patientController($router, $database);

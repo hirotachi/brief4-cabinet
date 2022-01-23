@@ -1,8 +1,8 @@
 <div class="filters">
     <form id="filter-search"><label class="filters_search">
             <span class="icon"><i class="fal fa-search"></i></span>
-            <input type="text" id="search" placeholder="search" autofocus="<?= isset($_REQUEST["search"]) ?>"
-                   value="<?= $_REQUEST["search"] ?? "" ?>"/>
+            <input type="text" id="search" placeholder="search" autofocus="<?= !!getQueryParams("search") ?>"
+                   value="<?= getQueryParams("search") ?>"/>
         </label></form>
     <div class="filters_btn" onclick="openForm()">
         <span class="plus"><i class="fal fa-plus"></i></span>
@@ -18,6 +18,7 @@
 
         const search = filterFormInput.value.trim();
         const url = new URL(window.location.href);
+        url.searchParams.delete("page");
         const searchParam = "search";
         if (search === url.searchParams.get(searchParam)) return;
         if (!search) {
