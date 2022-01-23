@@ -1,23 +1,6 @@
 <?php
 
 
-/**
- * handle duplicate entries exception
- * @param $cb
- * @return false|string|void
- */
-function handleDuplicateException($cb)
-{
-    try {
-        return $cb();
-    } catch (PDOException $e) {
-        preg_match_all("/key '\w+.(?P<key>\w+)'$/", $e->getMessage(), $matches);
-        http_response_code(409);
-        return json_encode(["message" => "duplicate entries", "keys" => $matches["key"]]);
-    }
-}
-
-
 function patientController(Router $router, Database $db)
 {
     $patient = new Patient($db, "Patient");
@@ -88,3 +71,4 @@ function patientController(Router $router, Database $db)
         return "success";
     });
 }
+
