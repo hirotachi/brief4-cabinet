@@ -2,7 +2,7 @@
 
 function doctorController(Router $router, Database $db)
 {
-    $doctor = new Doctor($db, "Doctor");
+    $doctor = new Doctor($db);
 
     $router->post("/login", function ($req) use ($doctor) {
         $body = $req->getBody();

@@ -3,7 +3,7 @@
 
 function patientController(Router $router, Database $db)
 {
-    $patient = new Patient($db, "Patient");
+    $patient = new Patient($db);
     $patientRouter = $router->create("/patients");
 
     $adminGuard = function ($req) {

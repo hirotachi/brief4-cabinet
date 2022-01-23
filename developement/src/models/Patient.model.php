@@ -5,7 +5,7 @@ class Patient extends Base
 {
     private array $searchFields = ["email", "firstName", "lastName", "sickness"];
 
-    public function __construct(Database $db, $tableName)
+    public function __construct(Database $db, $tableName = "Patient")
     {
         parent::__construct($db, $tableName);
     }
