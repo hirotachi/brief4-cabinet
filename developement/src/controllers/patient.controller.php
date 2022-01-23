@@ -30,7 +30,8 @@ function patientController(Router $router, Database $db)
     });
 
     $patientRouter->post("/", function ($req) use ($patient) {
-        return json_encode($req->getBody());
+        $createdPatient = $patient->create($req->getBody());
+        return json_encode($createdPatient);
     });
 
     $patientRouter->patch("/:id", function ($req) {

@@ -2,17 +2,17 @@
 
 class Database
 {
-    private PDO $pdo;
+    public PDO $connection;
 
     public function __construct($uri, $username, $password)
     {
         $driver_options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
-        $this->pdo = new PDO($uri, $username, $password, $driver_options);
+        $this->connection = new PDO($uri, $username, $password, $driver_options);
     }
 
     public function query($str, ...$params): bool|PDOStatement
     {
-        $stmt = $this->pdo->prepare($str);
+        $stmt = $this->connection->prepare($str);
         preg_match_all("/:\w+/", $str, $matches);
 
         $stmtParams = $matches[0];
