@@ -10,7 +10,7 @@ class Patient extends Base
         parent::__construct($db, $tableName);
     }
 
-    public function countPatients($search = "%%")
+    public function getPatientsCount($search = "%%")
     {
         return $this->db->query("select count(id) as patients_count from ".$this->tableName." where ".$this->searchFilters(),
             ["search" => $search])->fetchColumn();

@@ -28,7 +28,10 @@ function patientController(Router $router, Database $db)
         $search = getQueryParams("search");
         $result = array();
         $searchQuery = "%$search%";
-        $result["count"] = $patient->countPatients($searchQuery);
+        $patientsCount = $patient->getPatientsCount($searchQuery);
+        
+        $result["count"] = $patientsCount;
+        $result["page"] = ceil($patientsCount / 10);
         $result["patients"] = $patient->searchPatients(page: $page, search: $searchQuery);
 
         return json_encode($result);
