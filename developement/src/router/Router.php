@@ -7,7 +7,7 @@ class Router
     public string $baseRoute;
     private Request $request;
     private string $defaultContentType;
-    private array $middleware;
+    private $middleware;
 
     public function __construct($defaultContentType = "application/json", $baseRoute = "")
     {
@@ -28,7 +28,7 @@ class Router
     function __call($name, $args)
     {
         list($route, $method) = $args;
-        $middleware = $args[2] ?? null;
+        $middleware = $args[2] ?? $this->middleware ?? null;
 
 
         $route = $this->baseRoute.$route;
@@ -56,6 +56,11 @@ class Router
             return $method($req);
         };
 
+    }
+
+    public function useMiddleware($method)
+    {
+        $this->middleware = $method;
     }
 
     function __destruct()
@@ -131,6 +136,7 @@ class SubRouter
 {
     private Router $router;
     private string $baseRoute;
+    private $middleware;
 
     public function __construct($router, $baseRoute = "")
     {
@@ -141,11 +147,17 @@ class SubRouter
     function __call($name, $args)
     {
         $route = $this->baseRoute.$args[0];
+        $args[] = $this->middleware;
         $this->router->{$name}($route, ...array_slice($args, 1));
     }
 
     public function create(string $basePath): SubRouter
     {
         return $this->router->create($this->baseRoute.$basePath);
+    }
+
+    public function useMiddleware($method)
+    {
+        $this->middleware = $method;
     }
 }
