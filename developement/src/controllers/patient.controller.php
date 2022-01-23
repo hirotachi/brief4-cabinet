@@ -63,7 +63,10 @@ function patientController(Router $router, Database $db)
     $patientRouter->patch("/:id", function ($req) use ($patient) {
         return handleDuplicateException(function () use ($patient, $req) {
             $id = $req->params["id"];
-
+            if (!is_numeric($id)) {
+                http_response_code(404);
+                return "patient with id: '$id' doesnt exist";
+            }
             $updatedPatient = $patient->update($id, $req->getBody());
             if (!$updatedPatient) {
                 http_response_code(404);
@@ -71,5 +74,18 @@ function patientController(Router $router, Database $db)
             }
             return json_encode($updatedPatient);
         });
+    });
+
+    $patientRouter->delete("/:id", function ($req) use ($patient) {
+        $id = $req->params["id"];
+        if (!is_numeric($id)) {
+            http_response_code(404);
+            return "patient with id: '$id' doesnt exist";
+        }
+        if (!$patient->removeById($id)) {
+            http_response_code(404);
+            return "patient with id: '$id' doesnt exist";
+        }
+        return "success";
     });
 }

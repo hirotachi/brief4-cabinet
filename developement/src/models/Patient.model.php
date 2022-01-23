@@ -45,7 +45,7 @@ class Patient extends Base
 
     }
 
-    public function update($id, $updates)
+    public function update(int $id, $updates)
     {
         $patient = $this->fetchById($id);
         if (!$patient) {
@@ -59,8 +59,9 @@ class Patient extends Base
         return [...$patient, ...$updates];
     }
 
-    public function remove()
+    public function removeById(int $id)
     {
-//        todo: implement remove patient
+        $deletedCount = $this->db->query("delete from ".$this->tableName." where id = :id", ["id" => $id])->rowCount();
+        return $deletedCount !== 0;
     }
 }
