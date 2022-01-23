@@ -99,7 +99,7 @@
                 body: JSON.stringify(state)
             }).then(() => {
                 //    todo implement redirection and error handling
-
+                routePush("/dashboard.php");
             });
         }
 

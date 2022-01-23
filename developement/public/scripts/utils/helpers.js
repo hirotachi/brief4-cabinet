@@ -11,7 +11,7 @@ function onClickOutside(el, cb) {
     })
 }
 
-function push(route) {
+function routePush(route) {
     window.location.href = route
 }
 
