@@ -36,6 +36,12 @@ function startAdminSession($userId)
     $_SESSION["userId"] = $userId;
 }
 
+function stopAdminSession()
+{
+    session_start();
+    session_destroy();
+}
+
 function getAdminIdFromSession()
 {
     session_start();
