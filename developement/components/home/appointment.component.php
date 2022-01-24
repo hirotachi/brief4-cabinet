@@ -32,42 +32,42 @@ $inputs = [
         <div class="main home--main">
             <p class="main_title">quick contact</p>
             <?php
-            foreach ($info as $item) {
+            foreach ($info as $item):
                 [$icon, $content] = $item;
-                echo "<div class='main_info'>
-                            <span class='icon'>$icon</span>
-                            <div class='content'>$content</div>
-                        </div>";
-            }
-            ?>
+                ?>
+                <div class='main_info'>
+                    <span class='icon'><?= $icon ?></span>
+                    <div class='content'><?= $content ?></div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="appointment_form home--main">
         <p class="appointment_form_title">appointment</p>
         <form>
             <?php
-            foreach ($inputs as $input) {
+            foreach ($inputs as $input):
                 [$type, $name, $placeholder, $options] = $input;
-                echo "<label class='$type'>";
-                switch ($type) {
-                    case   "select":
-                        echo "<select name='$name'>
+                ?>
+                <label class="<?= $type ?>">
+                    <?php switch ($type) {
+                        case   "select":
+                            echo "<select name='$name'>
                                    <option selected disabled>$placeholder</option>
                                 ";
-                        foreach ($options as $option) {
-                            echo "<option value='$option'>$option</option>";
-                        }
-                        echo "</select>";
-                        break;
-                    case "textarea":
-                        echo "<textarea placeholder='$placeholder' name='$name'></textarea>";
-                        break;
-                    default:
-                        echo "<input type='$type' name='$name' placeholder='$placeholder'/>";
-                }
-                echo "</label>";
-            }
-            ?>
+                            foreach ($options as $option) {
+                                echo "<option value='$option'>$option</option>";
+                            }
+                            echo "</select>";
+                            break;
+                        case "textarea":
+                            echo "<textarea placeholder='$placeholder' name='$name'></textarea>";
+                            break;
+                        default:
+                            echo "<input type='$type' name='$name' placeholder='$placeholder'/>";
+                    } ?>
+                </label>
+            <?php endforeach; ?>
             <button>send message</button>
         </form>
     </div>

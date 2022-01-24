@@ -5,7 +5,7 @@ use cabinet_rafik;
 create table if not exists Patient
 (
     id          int auto_increment,
-    firstname   varchar(255),
+    firstName   varchar(255),
     lastName    varchar(255),
     email       varchar(255) unique,
     birthdate   datetime NOT NULL,
@@ -15,7 +15,7 @@ create table if not exists Patient
 );
 
 create index idx_lastname on Patient (lastName);
-create index idx_lastname on Patient (firstname);
+create index idx_lastname on Patient (firstName);
 
 create table if not exists Doctor
 (

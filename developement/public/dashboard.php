@@ -1,7 +1,12 @@
 <?php
 require_once "../components/layout.component.php";
 require_once "../components/nav.component.php";
+require_once "../utils/index.php";
 
+@include_once "../src/models/index.php";
+
+
+adminPageGuard();
 
 layoutStart(["layout/dashboard"], "Cabinet Rafik - Dashboard");
 nav();

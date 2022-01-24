@@ -13,17 +13,17 @@ $benefits = [
         <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id parturient ac adipiscing
             turpis purus dignissim sed tortor. Cras.</p>
         <div class="benefits">
-            <?php foreach ($benefits as $benefit) {
+            <?php foreach ($benefits as $benefit):
                 $icon = $benefit["icon"];
-                $title = $benefit["title"];
-                echo "<div class='benefit'>
-                        <span class='benefit_icon'>$icon</span>
-                        <div class='benefit_info'>                        
-                         <p class='benefit_title'>$title</p>
-                         <p class='benefit_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt.</p>
-                        </div>
-                    </div>";
-            } ?>
+                $title = $benefit["title"]; ?>
+                <div class='benefit'>
+                    <span class='benefit_icon'><?= $icon ?></span>
+                    <div class='benefit_info'>
+                        <p class='benefit_title'><?= $title ?></p>
+                        <p class='benefit_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt.</p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

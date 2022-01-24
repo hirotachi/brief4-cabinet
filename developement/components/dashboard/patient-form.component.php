@@ -3,7 +3,17 @@
 
     function openForm(initialState) {
         const patientForm = document.createElement("form");
+
+
         patientForm.classList.add("form")
+        const fields = [
+            {type: "text", label: "first name", name: "firstName", required: true},
+            {type: "text", label: "last name", name: "lastName", required: true},
+            {type: "email", label: "email address", name: "email"},
+            {type: "tel", label: "phone number", name: "phoneNumber"},
+            {type: "date", label: "birth date", name: "birthdate", required: true},
+            {type: "text", label: "sickness", name: "sickness"},
+        ];
         const state = initialState ?? {}
 
         const patientFormWrapper = document.createElement("div")
@@ -23,31 +33,20 @@
             e.stopPropagation()
         })
 
-        function handleSubmit(e) {
-            e.preventDefault();
-            console.log(state)
-        }
 
-        patientForm.addEventListener("submit", handleSubmit)
-
-        const inputs = [
-            {type: "text", label: "first name", name: "firstName"},
-            {type: "text", label: "last name", name: "lastName"},
-            {type: "email", label: "email address", name: "email"},
-            {type: "tel", label: "phone number", name: "phone"},
-            {type: "date", label: "birth date", name: "date"},
-            {type: "text", label: "sickness", name: "sickness"},
-        ].map(data => {
-            const {type, label, name} = data;
+        const inputs = fields.map(data => {
+            const {type, label, name, required} = data;
             const labelEl = document.createElement("label");
             labelEl.innerHTML = `<span>${label}</span>`
 
             const el = document.createElement("input")
             el.type = type
             el.name = name;
+            el.required = required
+
             if (type === "date") {
                 const date = new Date(state[name]);
-                el.defaultValue = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate()}`
+                el.defaultValue = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`
             } else {
                 el.defaultValue = state[name] ?? "";
             }
@@ -86,6 +85,25 @@
             })
         };
         patientForm.querySelectorAll("input").forEach(addListener)
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const isUpdate = !!initialState && !!state.id;
+            console.log(isUpdate, state)
+            const id = state.id;
+            if (isUpdate) {
+                delete state.id;
+            }
+            fetch(`/api/patients${isUpdate ? `/${id}` : ""}`, {
+                method: isUpdate ? "PATCH" : "POST",
+                body: JSON.stringify(state)
+            }).then(() => {
+                //    todo implement redirection and error handling
+                routePush("/dashboard.php");
+            });
+        }
+
+        patientForm.addEventListener("submit", handleSubmit)
     }
 
 </script>

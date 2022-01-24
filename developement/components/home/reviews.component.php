@@ -6,19 +6,17 @@
     </div>
     <div class="reviews_list">
         <?php
-        for ($i = 0; $i < 3; $i++) {
-            echo "
+        for ($i = 0; $i < 3; $i++): ?>
             <div class='review'>
                 <img src='assets/images/avatars/400.jpg' alt='avatar'/>
                 <p class='name'>andrew smith</p>
                 <p class='text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat sollicitudin.</p>
                 <div class='rates'>
-            ";
-            for ($j = 0; $j < 5; $j++) {
-                echo '<span><i class="fas fa-star"></i></span>';
-            }
-            echo "</div></div>";
-        }
-        ?>
+                    <?php for ($j = 0; $j < 5; $j++): ?>
+                        <span><i class="fas fa-star"></i></span>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        <?php endfor; ?>
     </div>
 </div>

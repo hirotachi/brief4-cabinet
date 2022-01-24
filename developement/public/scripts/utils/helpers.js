@@ -10,3 +10,11 @@ function onClickOutside(el, cb) {
         if (!el.contains(target)) cb(target);
     })
 }
+
+function routePush(route) {
+    window.location.href = route
+}
+
+function routeReplace(url) {
+    window.location.replace(url)
+}
