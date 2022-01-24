@@ -82,13 +82,13 @@ function patientController(Router $router, Database $db)
         $id = $req->params["id"];
         if (!is_numeric($id)) {
             http_response_code(404);
-            return "patient with id: '$id' doesnt exist";
+            return json_encode(["message" => "patient with id: '$id' doesnt exist"]);
         }
         if (!$patient->removeById($id)) {
             http_response_code(404);
-            return "patient with id: '$id' doesnt exist";
+            return json_encode(["message" => "patient with id: '$id' doesnt exist"]);
         }
-        return "success";
+        return json_encode(["message" => "success"]);
     });
 
 }
