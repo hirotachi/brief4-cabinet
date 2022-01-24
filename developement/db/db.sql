@@ -15,7 +15,7 @@ create table if not exists Patient
 );
 
 create index idx_lastname on Patient (lastName);
-create index idx_lastname on Patient (firstName);
+create index idx_firstname on Patient (firstName);
 
 create table if not exists Doctor
 (
