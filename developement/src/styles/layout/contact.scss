@@ -19,7 +19,7 @@
         display: flex;
         justify-content: space-between;
         flex-direction: row;
-        padding: 7rem 10%;
+        padding: 5rem 10%;
         margin: 1.5rem auto;
     }
 
@@ -49,7 +49,7 @@
       gap: 3rem;
       width: 100%;
       background-color: $primary-bg-color;
-      padding: 1rem 2rem;
+      padding: 2rem 2rem;
       border-radius: 2rem;
       
       @include desktop {
@@ -57,7 +57,7 @@
       }
 
       h1{
-        margin: 1rem 0;
+        margin-bottom: 1rem;
       }
 
       .input{
