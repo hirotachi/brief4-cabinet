@@ -18,7 +18,7 @@ function doctorController(Router $router, Database $db)
             return json_encode(["message" => "wrong username or password"]);
         }
         startAdminSession($user["id"]);
-        return "success";
+        return json_encode(["message" => "success"]);
     });
 
     $router->post("/register", function ($req) use ($doctor) {

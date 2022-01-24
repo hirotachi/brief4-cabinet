@@ -15,7 +15,8 @@ function patientController(Router $router, Database $db)
     };
 
 
-//    $patientRouter->useMiddleware($adminGuard); todo activate guard
+    $patientRouter->useMiddleware($adminGuard);
+// todo activate guard
 
     $patientRouter->get("/", function ($req) use ($patient) {
         $page = getQueryParams("page", "int") ?? 1;

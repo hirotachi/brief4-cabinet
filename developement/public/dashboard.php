@@ -6,7 +6,7 @@ require_once "../utils/index.php";
 @include_once "../src/models/index.php";
 
 
-//adminPageGuard();
+adminPageGuard();
 
 layoutStart(["layout/dashboard"], "Cabinet Rafik - Dashboard");
 nav();
