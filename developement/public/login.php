@@ -35,14 +35,15 @@ nav();
     const usernameInput = loginForm.querySelector("input[name='username']");
     const passwordInput = loginForm.querySelector("input[name='password']");
     const errorEl = loginForm.querySelector("#error");
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+    loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
         const username = usernameInput.value;
         const password = passwordInput.value;
         fetch("/api/login", {
             method: "POST",
             body: JSON.stringify({username, password})
-        }).then((res) => res.json()).then((data) => {
+        })
+        .then((res) => res.json()).then((data) => {
             const message = data.message;
             if (message === "success") {
                 routeReplace("/dashboard.php");
