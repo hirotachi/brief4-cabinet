@@ -63,6 +63,7 @@ $patients = array_map(function ($v) {
         <?php endfor; ?>
     </div>
 <?php endif ?>
+
 <?php require "patient-form.component.php" ?>
 
 
@@ -78,9 +79,16 @@ $patients = array_map(function ($v) {
     function removePatient(target) {
         const id = getIdFromParent(target)
         const patient = patientsMapById[id];
-        const answer = confirm(`do you really want to remove patient id "${id}"`);
-        console.log("answer is " + answer);
-        console.log(`removing patient ${patient.name}`)
+        const remove = confirm(`do you really want to remove patient id "${id}"`);
+        if (remove) {
+            fetch(`/api/patients/${id}`, {method: "DELETE"}).then(res => res.json()).then((data) => {
+                if (data.message === "success") {
+                    routeReplace("/dashboard.php");
+                } else {
+                    alert(data.message);
+                }
+            });
+        }
     }
 
     function editPatient(target) {

@@ -19,6 +19,10 @@ $router->get("/:tester", function ($req) {
     return "hello $name, nice how are you! ".getQueryParams("search");
 });
 
+$router->post("/contact", function ($req) {
+    return json_encode($req->getBody());
+});
+
 
 $router->get("/", function ($req) {
     return "hello world!!!!";

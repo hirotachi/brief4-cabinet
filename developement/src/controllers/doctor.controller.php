@@ -36,4 +36,11 @@ function doctorController(Router $router, Database $db)
             return "success";
         });
     });
+
+    $router->get("/logout", function () {
+        stopAdminSession();
+        return json_encode([
+            "message" => "logged out successfully",
+        ]);
+    });
 }

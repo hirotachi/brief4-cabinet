@@ -8,4 +8,37 @@
   @include desktop {
     margin-top: 5rem;
   }
+
+  &_logout {
+    padding: 1rem;
+    background-color: $primary-color;
+    color: white;
+    @include size(5rem);
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.8rem;
+    position: fixed;
+    bottom: 3rem;
+    z-index: 2;
+    right: 3rem;
+    box-shadow: 0 0 .5rem rgba(black, .4);
+    transition: all .2s ease;
+    @include desktop {
+      right: 6rem;
+      bottom: 4rem;
+
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 5%);
+
+    }
+  }
 }

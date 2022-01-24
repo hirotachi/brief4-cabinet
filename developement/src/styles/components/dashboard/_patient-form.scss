@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: center;
   animation: appear .3s ease forwards;
+  z-index: 3;
 
   &_close {
     box-shadow: inherit;
