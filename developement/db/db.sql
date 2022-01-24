@@ -1,6 +1,6 @@
-Create database if not exists cabinet_rafik;
+Create database if not exists app_db;
 
-use cabinet_rafik;
+use app_db;
 
 create table if not exists Patient
 (
