@@ -13,6 +13,16 @@
     gap: unset;
   }
 
+  &_placeholder {
+    text-align: center;
+    text-transform: capitalize;
+    opacity: .5;
+    margin-top: 5rem;
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+
   &_pagination {
     display: flex;
     justify-content: center;

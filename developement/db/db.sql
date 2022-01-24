@@ -1,6 +1,6 @@
-Create database if not exists cabinet_rafik;
+Create database if not exists app_db;
 
-use cabinet_rafik;
+use app_db;
 
 create table if not exists Patient
 (
@@ -15,7 +15,7 @@ create table if not exists Patient
 );
 
 create index idx_lastname on Patient (lastName);
-create index idx_lastname on Patient (firstName);
+create index idx_firstname on Patient (firstName);
 
 create table if not exists Doctor
 (
