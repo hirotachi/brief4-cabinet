@@ -15,54 +15,60 @@ $patients = array_map(function ($v) {
 }, $patient->search(page: $page, search: $searchQuery));
 
 ?>
-
-
-<div class="patients">
-    <div class="columns">
-        <span></span>
-        <span>name</span>
-        <span>phone</span>
-        <span>email</span>
-        <span>birthdate</span>
-        <span>sickness</span>
-        <span class="columns--more">more</span>
-    </div>
-    <?php foreach ($patients as $patientData):
-        [
-            "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phoneNumber" => $phone, "email" => $email,
-            "birthdate" => $date, "sickness" => $sickness
-        ] = array_map(function ($v) {
-            return $v ?? "N/A";
-        }, $patientData); ?>
-        <div class='patient'>
-            <img src="./assets/images/avatars/400.jpg" alt="avatar"/>
-            <span><?= $firstName." ".$lastName ?></span>
-            <span><?= $phone ?></span>
-            <span><?= $email ?></span>
-            <span><?= $date ?></span>
-            <span><?= $sickness ?></span>
-            <div class='columns--more'>
-                <div class='more ' aria-data-id='<?= $id ?>'>
-                    <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
-                    <div class='more_options'>
-                        <span class='option--danger' onclick='removePatient(this)'>remove</span>
-                        <span onclick='editPatient(this)'>edit</span>
+<?php if (count($patients) === 0): ?>
+    <p class="patients_placeholder">
+        no patients right now please create one
+    </p>
+<?php endif; ?>
+<?php if (count($patients) > 0): ?>
+    <div class="patients">
+        <div class="columns">
+            <span></span>
+            <span>name</span>
+            <span>phone</span>
+            <span>email</span>
+            <span>birthdate</span>
+            <span>sickness</span>
+            <span class="columns--more">more</span>
+        </div>
+        <?php foreach ($patients as $patientData):
+            [
+                "id" => $id, "firstName" => $firstName, "lastName" => $lastName, "phoneNumber" => $phone,
+                "email" => $email,
+                "birthdate" => $date, "sickness" => $sickness
+            ] = array_map(function ($v) {
+                return $v ?? "N/A";
+            }, $patientData); ?>
+            <div class='patient'>
+                <img src="./assets/images/avatars/400.jpg" alt="avatar"/>
+                <span><?= $firstName." ".$lastName ?></span>
+                <span><?= $phone ?></span>
+                <span><?= $email ?></span>
+                <span><?= $date ?></span>
+                <span><?= $sickness ?></span>
+                <div class='columns--more'>
+                    <div class='more ' aria-data-id='<?= $id ?>'>
+                        <span class='more_btn'><i class='far fa-ellipsis-h'></i></span>
+                        <div class='more_options'>
+                            <span class='option--danger' onclick='removePatient(this)'>remove</span>
+                            <span onclick='editPatient(this)'>edit</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
-<?php if ($totalPages > 1):
-    $url = preg_replace("/\??(&+)?page=\d+&?/", "", getCurrentUrl());
-    $isSearching = str_contains($url, "search=");
-    ?>
-    <div class="patients_pagination">
-        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-            <a href="<?= $url.($i === 1 ? "" : ($isSearching ? "&" : "?")."page=$i") ?>"><?= $i ?></a>
-        <?php endfor; ?>
+        <?php endforeach; ?>
     </div>
-<?php endif ?>
+    <?php if ($totalPages > 1):
+        $url = preg_replace("/\??(&+)?page=\d+&?/", "", getCurrentUrl());
+        $isSearching = str_contains($url, "search=");
+        ?>
+        <div class="patients_pagination">
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="<?= $url.($i === 1 ? "" : ($isSearching ? "&" : "?")."page=$i") ?>"><?= $i ?></a>
+            <?php endfor; ?>
+        </div>
+    <?php endif ?>
+<?php endif; ?>
 
 <?php require "patient-form.component.php" ?>
 
