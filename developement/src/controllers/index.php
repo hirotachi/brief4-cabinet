@@ -20,7 +20,8 @@ $router->get("/:tester", function ($req) {
 });
 
 $router->post("/contact", function ($req) {
-    return json_encode($req->getBody());
+//    send message to inbox
+    return json_encode(["message" => "success"]);
 });
 
 
