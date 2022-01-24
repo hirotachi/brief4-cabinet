@@ -15,6 +15,7 @@ nav(["home--main"]);
     require "../components/home/services.component.php";
     require "../components/home/story.component.php";
     require "../components/home/appointment.component.php";
+    require "../components/home/location.component.php";
     require "../components/home/reviews.component.php";
     require "../components/home/subscription.component.php";
     ?>

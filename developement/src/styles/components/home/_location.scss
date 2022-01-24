@@ -1,0 +1,33 @@
+@use "../../abstracts" as *;
+
+.location {
+  @include normalizePadding;
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-direction: column;
+  @include tablet {
+    gap: 4rem;
+  }
+  @include desktop {
+    gap: 5rem;
+  }
+
+  .title {
+    text-transform: capitalize;
+    text-align: center;
+
+  }
+
+  #map {
+    border-radius: 1rem;
+    height: 35rem;
+    overflow: hidden;
+    @include tablet {
+      height: 45rem;
+    }
+    @include desktop {
+      height: 50rem;
+    }
+  }
+}
