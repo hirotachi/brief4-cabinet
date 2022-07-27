@@ -6,6 +6,7 @@
 @require_once __DIR__."/doctor.controller.php";
 
 
+var_dump("hello world");
 
 $router = new Router(baseRoute: "/api");
 $database = new Database();
