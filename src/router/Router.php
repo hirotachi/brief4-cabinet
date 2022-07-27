@@ -27,6 +27,8 @@ class Router
 
     function __call($name, $args)
     {
+        var_dump("hello from router call");
+
         list($route, $method) = $args;
         $middleware = $args[2] ?? $this->middleware ?? null;
 
