@@ -6,6 +6,7 @@
 @include_once "doctor.controller.php";
 
 
+
 $router = new Router(baseRoute: "/api");
 $database = new Database();
 

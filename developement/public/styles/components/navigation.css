@@ -1,0 +1,165 @@
+.nav {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 768px) {
+  .nav {
+    padding: 1.5rem 5%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .nav {
+    padding: 1.5rem 10%;
+  }
+}
+.nav img {
+  width: 100%;
+  height: 100%;
+}
+.nav__contact {
+  background-color: #1d63f4;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
+  display: none;
+}
+.nav__contact:hover {
+  background-color: #0a4cd4;
+}
+@media only screen and (min-width: 768px) {
+  .nav__contact {
+    display: inline-block;
+  }
+}
+.nav__logo {
+  width: 4rem;
+}
+@media only screen and (min-width: 768px) {
+  .nav__logo {
+    width: 14rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .nav__logo {
+    width: 20rem;
+  }
+}
+.nav__logo img:first-of-type {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .nav__logo img:first-of-type {
+    display: inline-block;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .nav__logo img:last-of-type {
+    display: none;
+  }
+}
+.nav__open {
+  font-size: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .nav__open {
+    display: none;
+  }
+}
+.nav .links {
+  list-style: none;
+  gap: 2rem;
+  font-size: 1.4rem;
+  align-items: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .nav .links {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .nav .links {
+    gap: 5rem;
+  }
+}
+.nav .links .link {
+  transition: all 0.2s ease;
+}
+.nav .links .link:hover {
+  color: #2d98fb;
+}
+.nav__mobile {
+  display: none;
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  gap: 5rem;
+}
+.nav__mobile .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  font-size: 2.5rem;
+}
+.nav__mobile .header img {
+  display: inline-block;
+  width: 4rem;
+}
+.nav__mobile .header span {
+  cursor: pointer;
+}
+.nav__mobile--open {
+  display: flex;
+}
+@media only screen and (min-width: 768px) {
+  .nav__mobile--open {
+    display: none;
+  }
+}
+.nav__mobile_contact {
+  text-transform: capitalize;
+  color: white;
+  font-weight: 700;
+  background-color: #1d63f4;
+  padding: 1rem;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+.nav__mobile_contact:hover {
+  background-color: #0a4cd4;
+}
+.nav__mobile__links {
+  list-style: none;
+  text-transform: capitalize;
+  font-weight: 700;
+  text-align: center;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.nav__mobile__links .link {
+  transition: all 0.2s ease;
+}
+.nav__mobile__links .link:hover {
+  color: #1d63f4;
+}
+
+/*# sourceMappingURL=navigation.css.map */
