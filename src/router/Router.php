@@ -71,7 +71,6 @@ class Router
     function resolve()
     {
         $dictionaryKey = strtolower($this->request->requestMethod);
-        var_dump($dictionaryKey);
         if (!isset($this->{$dictionaryKey})) {
             $this->defaultRequestHandler();
             return;
@@ -80,6 +79,7 @@ class Router
 
         $queryString = $this->request->queryString ?? "";
         $formattedRoute = $this->formatRoute($this->request->requestUri);
+        var_dump($formattedRoute);
         $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
 
 
