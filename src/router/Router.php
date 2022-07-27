@@ -1,5 +1,5 @@
 <?php
-include_once "Request.php";
+require_once "Request.php";
 
 class Router
 {
@@ -27,7 +27,6 @@ class Router
 
     function __call($name, $args)
     {
-        var_dump($name, $args);
         list($route, $method) = $args;
         $middleware = $args[2] ?? $this->middleware ?? null;
 

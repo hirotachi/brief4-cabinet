@@ -1,9 +1,9 @@
 <?php
-@include_once "../router/Router.php";
-@include_once "../models/index.php";
+@require_once "../router/Router.php";
+@require_once "../models/index.php";
 
-@include_once "patient.controller.php";
-@include_once "doctor.controller.php";
+@require_once "patient.controller.php";
+@require_once "doctor.controller.php";
 
 
 

@@ -1,6 +1,6 @@
 <?php
 
-include_once "IRequest.php";
+require_once "IRequest.php";
 
 
 class Request implements IRequest
