@@ -71,6 +71,7 @@ class Router
     function resolve()
     {
         $dictionaryKey = strtolower($this->request->requestMethod);
+        var_dump($this);
         if (!isset($this->{$dictionaryKey})) {
             $this->defaultRequestHandler();
             return;
