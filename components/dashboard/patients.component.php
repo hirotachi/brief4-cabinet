@@ -70,7 +70,8 @@ $patients = array_map(function ($v) {
     <?php endif ?>
 <?php endif; ?>
 
-<?php require "patient-form.component.php" ?>
+<?php
+require "patient-form.component.php" ?>
 
 
 <script>

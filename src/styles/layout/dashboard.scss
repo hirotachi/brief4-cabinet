@@ -1,5 +1,5 @@
-@use "../abstracts" as *;
-@use "../components/dashboard";
+@use "../abstracts/index" as *;
+@use "../components/dashboard/index";
 
 
 .dashboard {
