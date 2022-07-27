@@ -1,0 +1,2 @@
+              RewriteCond %{REQUEST_URI} !^/developement/public/(index\.php|files|static)(/|$)
+              RewriteRule (.*) /developement/public/index.php [L,QSA]
