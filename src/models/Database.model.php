@@ -28,9 +28,20 @@ class Database
         $password = $config["password"];
 
         $uri = "pgsql:host=$host:$port;dbname=$dbname";
-        var_dump($uri);
+
         $driver_options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
-        $this->connection = new PDO($uri, $username, $password, $driver_options);
+
+        $db = parse_url(getenv("DATABASE_URL"));
+
+        $pdo = new PDO("pgsql:" . sprintf(
+                "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+                $db["host"],
+                $db["port"],
+                $db["user"],
+                $db["pass"],
+                ltrim($db["path"], "/")
+            ));
+        $this->connection = $pdo;
     }
 
     public function query($str, $params = []): bool|PDOStatement
