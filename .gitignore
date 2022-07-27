@@ -1,2 +1,4 @@
 /developement/node_modules/
 vendor
+
+src/**/*.css
