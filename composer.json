@@ -1,0 +1,12 @@
+{
+    "name": "said/developement",
+    "require": {
+        "mykehowells/dotenv": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "Said Oudouane",
+            "email": "saidoudouane@gmail.com"
+        }
+    ]
+}
