@@ -1,9 +1,9 @@
 <?php
-@require_once "../router/Router.php";
-@require_once "../models/index.php";
+@require_once dirname(__DIR__)."/router/Router.php";
+@require_once dirname(__DIR__)."/models/index.php";
 
-@require_once "patient.controller.php";
-@require_once "doctor.controller.php";
+@require_once __DIR__."/patient.controller.php";
+@require_once __DIR__."/doctor.controller.php";
 
 
 
