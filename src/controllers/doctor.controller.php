@@ -3,6 +3,7 @@
 function doctorController(Router $router, Database $db)
 {
     $doctor = new Doctor($db);
+    var_dump("hello world");
 
     $router->post("/login", function ($req) use ($doctor) {
         $body = $req->getBody();
