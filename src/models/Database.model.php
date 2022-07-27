@@ -28,6 +28,7 @@ class Database
         $password = $config["password"];
 
         $uri = "pgsql:host=$host:$port;dbname=$dbname";
+        var_dump($uri);
         $driver_options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
         $this->connection = new PDO($uri, $username, $password, $driver_options);
     }
