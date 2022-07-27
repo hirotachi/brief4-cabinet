@@ -27,7 +27,6 @@ class Router
 
     function __call($name, $args)
     {
-        var_dump("hello from router call", $name, $args);
 
         list($route, $method) = $args;
         $middleware = $args[2] ?? $this->middleware ?? null;
@@ -79,6 +78,8 @@ class Router
         }
         $methodDictionary = $this->{$dictionaryKey};
 
+        var_dump("here is the method dictionary", $methodDictionary);
+
         $queryString = $this->request->queryString ?? "";
         $formattedRoute = $this->formatRoute($this->request->requestUri);
         $formattedRoute = str_replace("?$queryString", "", $formattedRoute);
@@ -111,6 +112,7 @@ class Router
         $contentType = $this->defaultContentType;
         header("Content-Type: $contentType");
         echo $method($this->request);
+        die();
     }
 
     private function defaultRequestHandler()
